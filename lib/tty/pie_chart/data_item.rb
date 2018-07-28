@@ -37,7 +37,8 @@ module TTY
       # @api private
       def to_label
         percent_fmt = '%.2f' % percent
-        "#{@pastel.decorate(fill, color)} #{name} #{percent_fmt}%"
+        label = color ? @pastel.decorate(fill, color) : fill
+        "#{label} #{name} #{percent_fmt}%"
       end
     end
   end # PieChart

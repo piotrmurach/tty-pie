@@ -74,7 +74,7 @@ module TTY
         angle = percent * FULL_CIRCLE_DEGREES / 100.to_f
         color_fill = item[:fill] || fill
         DataItem.new(item[:name], item[:value], percent, angle,
-                     item[:color], color_fill)
+                     item.fetch(:color, false), color_fill)
       end
     end
 
@@ -116,11 +116,15 @@ module TTY
         output << ' ' * (center_x - width) if top.nil?
         (-width..width).each do |x|
           angle = radian_to_degree(Math.atan2(x, y))
-          idx = select_data_item(angle, angles)
+          item = items[select_data_item(angle, angles)]
           if !top.nil?
             output << cursor.move_to(center_x + x, center_y + y)
           end
-          output << @pastel.decorate(items[idx].fill, items[idx].color)
+          if item.color
+            output << @pastel.decorate(item.fill, item.color)
+          else
+            output << item.fill
+          end
         end
 
         if legend
