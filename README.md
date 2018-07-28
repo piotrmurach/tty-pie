@@ -1,5 +1,20 @@
 # TTY:PieChart [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
 
+[![Gem Version](https://badge.fury.io/rb/tty-pie_chart.svg)][gem]
+[![Build Status](https://secure.travis-ci.org/piotrmurach/tty-pie_chart.svg?branch=master)][travis]
+[![Build status](https://ci.appveyor.com/api/projects/status/yv6bry8a5w7awiwp?svg=true)][appveyor]
+[![Maintainability](https://api.codeclimate.com/v1/badges/dfac05073e1549e9dbb6/maintainability)][codeclimate]
+[![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-pie_chart/badge.svg)][coverage]
+[![Inline docs](http://inch-ci.org/github/piotrmurach/tty-pie_chart.svg?branch=master)][inchpages]
+
+[gitter]: https://gitter.im/piotrmurach/tty
+[gem]: http://badge.fury.io/rb/tty-pie_chart
+[travis]: http://travis-ci.org/piotrmurach/tty-pie_chart
+[appveyor]: https://ci.appveyor.com/project/piotrmurach/tty-pie_chart
+[codeclimate]: https://codeclimate.com/github/piotrmurach/tty-pie_chart/maintainability
+[coverage]: https://coveralls.io/github/piotrmurach/tty-pie_chart
+[inchpages]: http://inch-ci.org/github/piotrmurach/tty-pie_chart
+
 > Draw pie charts in your terminal window
 
 **TTY::PieChart** provides pie chart drawing component for [TTY](https://github.com/piotrmurach/tty) toolkit.
@@ -81,4 +96,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Tty::PieChart project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the TTY::PieChart project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
+
+## Copyright
+
+Copyright (c) 2018 Piotr Murach. See LICENSE for further details.
