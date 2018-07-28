@@ -10,6 +10,8 @@ module TTY
   class PieChart
     FULL_CIRCLE_DEGREES = 360
 
+    POINT_SYMBOL = '•'
+
     attr_reader :top, :left
 
     attr_reader :center_x, :center_y
@@ -36,7 +38,7 @@ module TTY
     # @param [Float] aspect_ratio
     #
     # @api public
-    def initialize(data, top: nil, left: nil, radius: 10, legend: true, fill: '•', aspect_ratio: 2)
+    def initialize(data, top: nil, left: nil, radius: 10, legend: true, fill: POINT_SYMBOL, aspect_ratio: 2)
       @data = data
       @top = top
       @left = left
