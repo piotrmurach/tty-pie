@@ -19,6 +19,8 @@
 
 **TTY::PieChart** provides pie chart drawing component for [TTY](https://github.com/piotrmurach/tty) toolkit.
 
+![Pie chart drawing](https://cdn.rawgit.com/piotrmurach/tty-pie_chart/master/assets/tty-pie_chart_drawing_crypto.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -39,6 +41,8 @@ Or install it yourself as:
 
 * [1. Usage](#1-usage)
 * [2. Interface](#2-interface)
+  * [2.1 draw](#21-draw)
+  * [2.2 position](#22-position)
 
 ## 1. Usage
 
