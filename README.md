@@ -41,8 +41,9 @@ Or install it yourself as:
 
 * [1. Usage](#1-usage)
 * [2. Interface](#2-interface)
-  * [2.1 draw](#21-draw)
-  * [2.2 position](#22-position)
+  * [2.1 data](#21-data)
+  * [2.2 draw](#22-draw)
+  * [2.3 position](#23-position)
 
 ## 1. Usage
 
@@ -83,6 +84,69 @@ print pie_chart.draw
 ```
 
 ## 2. Interface
+
+### 2.1 data
+
+To draw a pie chart you need to provide data. A single data item is just a Ruby hash that can contain the following keys:
+
+* `:name` for setting the entry name in legend
+* `:value` - used for calculating actual pie slice size
+* `:color` - used to color a pie slice corresponding with a value
+* `:fill` - used as a character to fill in a pie slice
+
+At the very minimum you need to provide a `:value` in order for a pie to calculate slice sizes. If you wish to have a legend then add the `:name` key as well.
+
+For example, the following will result in four slices in a pie chart:
+
+```ruby
+data = [
+  { name: 'BTC', value: 5977 },
+  { name: 'BCH', value: 3045 },
+  { name: 'LTC', value: 2030 },
+  { name: 'ETH', value: 2350 }
+]
+```
+
+However, the above data slices will be displayed without any color. Use `:color` out of [supported colors](https://github.com/piotrmurach/pastel#3-supported-colors):
+
+```ruby
+data = [
+  { name: 'BTC', value: 5977, color: :bright_yellow },
+  { name: 'BCH', value: 3045, color: :bright_green },
+  { name: 'LTC', value: 2030, color: :bright_magenta },
+  { name: 'ETH', value: 2350, color: :bright_cyan }
+]
+```
+
+To further make your chart readable consider making pie chart slices visible by channging the displayed characters using `:fill` key:
+
+```ruby
+data = [
+  { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
+  { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' },
+  { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' },
+  { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
+]
+```
+
+There is no limit to the amount of data you can present, however there is a point of scale and legibility to be considered when printing in the terminals.
+
+### 2.2 draw
+
+Once a pie chart has been initialized use the `draw` method to return a string representation of the chart. To actually show it in a terminal, you need to print it:
+
+```ruby
+print pie_chart.draw
+# => this will render chart in terminal
+```
+
+### 2.3 position
+
+If you don't provide location for you pie chart it will be printed at the current cursor location. In order to absolutely position the chart use `:left` and `:top` keyword arguments. For example, if you wanted to position the pie chart at `50th`column and `10th` row:
+
+```ruby
+TTY::PieChart.new(data, left: 50, top: 10)
+```
 
 ## Development
 
