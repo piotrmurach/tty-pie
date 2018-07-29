@@ -12,6 +12,10 @@ module TTY
 
     POINT_SYMBOL = '•'
 
+    LEGEND_LINE_SPACE = 1
+
+    LEGEND_LEFT_SPACE = 4
+
     attr_reader :top, :left
 
     attr_reader :center_x, :center_y
@@ -38,7 +42,7 @@ module TTY
     # @param [Float] aspect_ratio
     #
     # @api public
-    def initialize(data, top: nil, left: nil, radius: 10, legend: true, fill: POINT_SYMBOL, aspect_ratio: 2)
+    def initialize(data, top: nil, left: nil, radius: 10, legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2)
       @data = data
       @top = top
       @left = left
@@ -92,6 +96,24 @@ module TTY
       end
     end
 
+    # The space between a legend and a chart
+    #
+    # @return [Integer]
+    #
+    # @api private
+    def legend_left
+      legend ? legend.fetch(:left, LEGEND_LEFT_SPACE) : LEGEND_LEFT_SPACE
+    end
+
+    # The space between each legend item
+    #
+    # @return [Integer]
+    #
+    # @api private
+    def legend_line
+      (legend ? legend.fetch(:line, LEGEND_LINE_SPACE) : LEGEND_LINE_SPACE) + 1
+    end
+
     # Draw a pie based on the provided data
     #
     # @return [String]
@@ -103,8 +125,8 @@ module TTY
       output = []
 
       labels = items.map(&:to_label)
-      label_vert_space  = 2
-      label_horiz_space = 4
+      label_vert_space  = legend_line
+      label_horiz_space = legend_left
       label_offset  = labels.size / 2
       label_boundry = label_vert_space * label_offset
       labels_range  = (-label_boundry..label_boundry).step(label_vert_space)
