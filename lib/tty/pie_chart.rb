@@ -164,6 +164,7 @@ module TTY
 
       output.join
     end
+    alias to_s draw
 
     # @api private
     def select_data_item(angle, angles)
