@@ -3,9 +3,9 @@
 RSpec.describe TTY::PieChart, '#draw' do
   let(:data) {
     [
-      { name: 'BTC', value: 5977, color: :bright_yellow },
-      { name: 'BCH', value: 3045, color: :bright_green },
-      { name: 'LTC', value: 2030, color: :bright_magenta }
+      { name: 'BTC', value: 5977 },
+      { name: 'BCH', value: 3045 },
+      { name: 'LTC', value: 2030 }
     ]
   }
 
@@ -15,14 +15,11 @@ RSpec.describe TTY::PieChart, '#draw' do
     output = pie.draw
 
     expect(output).to eq([
-       "   \e[95m•\e[0m\e[93m•\e[0m\e[93m•\e[0m",
-       "       \e[93m•\e[0m BTC 54.08%\n",
-       " \e[92m•\e[0m\e[95m•\e[0m\e[95m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
-       "\e[92m•\e[0m\e[92m•\e[0m\e[92m•\e[0m\e[92m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m",
-       "    \e[92m•\e[0m BCH 27.55%\n",
-       " \e[92m•\e[0m\e[92m•\e[0m\e[92m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
-       "   \e[92m•\e[0m\e[93m•\e[0m\e[93m•\e[0m",
-       "       \e[95m•\e[0m LTC 18.37%\n"
+       "   •••       • BTC 54.08%\n",
+       " •••••••\n",
+       "•••••••••    • BCH 27.55%\n",
+       " •••••••\n",
+       "   •••       • LTC 18.37%\n"
     ].join)
   end
 
@@ -32,11 +29,11 @@ RSpec.describe TTY::PieChart, '#draw' do
     output = pie.draw
 
     expect(output).to eq([
-       "   \e[95m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
-       " \e[92m•\e[0m\e[95m•\e[0m\e[95m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
-       "\e[92m•\e[0m\e[92m•\e[0m\e[92m•\e[0m\e[92m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
-       " \e[92m•\e[0m\e[92m•\e[0m\e[92m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
-       "   \e[92m•\e[0m\e[93m•\e[0m\e[93m•\e[0m\n",
+       "   •••\n",
+       " •••••••\n",
+       "•••••••••\n",
+       " •••••••\n",
+       "   •••\n"
     ].join)
   end
 
@@ -46,14 +43,12 @@ RSpec.describe TTY::PieChart, '#draw' do
     output = pie.draw
 
     expect(output).to eq([
-      "\e[11;54H\e[95m•\e[0m\e[11;55H\e[93m•\e[0m\e[11;56H\e[93m•\e[0m",
-      "\e[11;63H\e[93m•\e[0m BTC 54.08%\n",
-      "\e[12;52H\e[92m•\e[0m\e[12;53H\e[95m•\e[0m\e[12;54H\e[95m•\e[0m\e[12;55H\e[93m•\e[0m\e[12;56H\e[93m•\e[0m\e[12;57H\e[93m•\e[0m\e[12;58H\e[93m•\e[0m\e[12;63H\n",
-      "\e[13;51H\e[92m•\e[0m\e[13;52H\e[92m•\e[0m\e[13;53H\e[92m•\e[0m\e[13;54H\e[92m•\e[0m\e[13;55H\e[93m•\e[0m\e[13;56H\e[93m•\e[0m\e[13;57H\e[93m•\e[0m\e[13;58H\e[93m•\e[0m\e[13;59H\e[93m•\e[0m",
-      "\e[13;63H\e[92m•\e[0m BCH 27.55%\n",
-      "\e[14;52H\e[92m•\e[0m\e[14;53H\e[92m•\e[0m\e[14;54H\e[92m•\e[0m\e[14;55H\e[93m•\e[0m\e[14;56H\e[93m•\e[0m\e[14;57H\e[93m•\e[0m\e[14;58H\e[93m•\e[0m\e[14;63H\n",
-      "\e[15;54H\e[92m•\e[0m\e[15;55H\e[93m•\e[0m\e[15;56H\e[93m•\e[0m",
-      "\e[15;63H\e[95m•\e[0m LTC 18.37%\n"
+      "\e[11;54H•\e[11;55H•\e[11;56H•\e[11;63H• BTC 54.08%\n",
+      "\e[12;52H•\e[12;53H•\e[12;54H•\e[12;55H•\e[12;56H•\e[12;57H•\e[12;58H•\e[12;63H\n",
+      "\e[13;51H•\e[13;52H•\e[13;53H•\e[13;54H•\e[13;55H•\e[13;56H•\e[13;57H•\e[13;58H•\e[13;59H•\e[13;63H• BCH 27.55%\n",
+      "\e[14;52H•\e[14;53H•\e[14;54H•\e[14;55H•\e[14;56H•\e[14;57H•\e[14;58H•\e[14;63H\n",
+      "\e[15;54H•\e[15;55H•\e[15;56H•",
+      "\e[15;63H• LTC 18.37%\n"
     ].join)
   end
 
@@ -63,11 +58,11 @@ RSpec.describe TTY::PieChart, '#draw' do
     output = pie.draw
 
     expect(output).to eq([
-      "\e[11;54H\e[95m•\e[0m\e[11;55H\e[93m•\e[0m\e[11;56H\e[93m•\e[0m\n",
-      "\e[12;52H\e[92m•\e[0m\e[12;53H\e[95m•\e[0m\e[12;54H\e[95m•\e[0m\e[12;55H\e[93m•\e[0m\e[12;56H\e[93m•\e[0m\e[12;57H\e[93m•\e[0m\e[12;58H\e[93m•\e[0m\n",
-      "\e[13;51H\e[92m•\e[0m\e[13;52H\e[92m•\e[0m\e[13;53H\e[92m•\e[0m\e[13;54H\e[92m•\e[0m\e[13;55H\e[93m•\e[0m\e[13;56H\e[93m•\e[0m\e[13;57H\e[93m•\e[0m\e[13;58H\e[93m•\e[0m\e[13;59H\e[93m•\e[0m\n",
-      "\e[14;52H\e[92m•\e[0m\e[14;53H\e[92m•\e[0m\e[14;54H\e[92m•\e[0m\e[14;55H\e[93m•\e[0m\e[14;56H\e[93m•\e[0m\e[14;57H\e[93m•\e[0m\e[14;58H\e[93m•\e[0m\n",
-      "\e[15;54H\e[92m•\e[0m\e[15;55H\e[93m•\e[0m\e[15;56H\e[93m•\e[0m\n",
+      "\e[11;54H\•\e[11;55H•\e[11;56H•\n",
+      "\e[12;52H\•\e[12;53H•\e[12;54H•\e[12;55H•\e[12;56H•\e[12;57H•\e[12;58H•\n",
+      "\e[13;51H\•\e[13;52H•\e[13;53H•\e[13;54H•\e[13;55H•\e[13;56H•\e[13;57H•\e[13;58H•\e[13;59H•\n",
+      "\e[14;52H\•\e[14;53H•\e[14;54H•\e[14;55H•\e[14;56H•\e[14;57H•\e[14;58H•\n",
+      "\e[15;54H\•\e[15;55H•\e[15;56H•\n",
     ].join)
   end
 end
