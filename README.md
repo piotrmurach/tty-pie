@@ -44,6 +44,8 @@ Or install it yourself as:
   * [2.1 data](#21-data)
   * [2.2 draw](#22-draw)
   * [2.3 position](#23-position)
+  * [2.4 radius](#24-radius)
+  * [2.5 legend](#25-legend)
 
 ## 1. Usage
 
@@ -67,7 +69,7 @@ pie_chart = TTY::PieChart.new(data, radius: 5)
 and print the pie chart in your terminal window:
 
 ```ruby
-print pie_chart.draw
+print pie_chart
 # =>
 #         ++***
 #     ++++++*******        * BTC 44.60%
@@ -89,7 +91,7 @@ print pie_chart.draw
 
 To draw a pie chart you need to provide data. A single data item is just a Ruby hash that can contain the following keys:
 
-* `:name` for setting the entry name in legend
+* `:name` - used for setting the entry name in legend
 * `:value` - used for calculating actual pie slice size
 * `:color` - used to color a pie slice corresponding with a value
 * `:fill` - used as a character to fill in a pie slice
@@ -131,6 +133,12 @@ data = [
 
 There is no limit to the amount of data you can present, however there is a point of scale and legibility to be considered when printing in the terminals.
 
+You can add data to pie chart during initialization:
+
+```ruby
+pie_chart = TTY::PieChart.new(data)
+```
+
 ### 2.2 draw
 
 Once a pie chart has been initialized use the `draw` method to return a string representation of the chart. To actually show it in a terminal, you need to print it:
@@ -146,6 +154,51 @@ If you don't provide location for you pie chart it will be printed at the curren
 
 ```ruby
 TTY::PieChart.new(data, left: 50, top: 10)
+```
+
+### 2.4 radius
+
+By default a pie chart is rendered with a `10`radius, you can change this using the `:radius` keyword:
+
+```ruby
+TTY::PieChart.new(data, radius: 5)
+```
+
+### 2.5 legend
+
+Provided the following data:
+
+```ruby
+data = [
+  { name: 'BTC', value: 5977, fill: '*' },
+  { name: 'BCH', value: 3045, fill: '+' },
+  { name: 'LTC', value: 2030, fill: 'x' }
+]
+```
+
+You can control how the legend is displayed using the `:legend` keyword and hash as value with the following keys:
+
+* `:left` - used to determine spacing between a chart and a legend, defaults to `4` columns
+* `:line` - used to determine spacing between legend labels, defaults to `1` line
+
+For example, to place a legend `10` columns away from the pie chart and separate each label by `2` lines do:
+
+```ruby
+pie_chart = TTY::PieChart.new(data, radius: 3, legend: {left: 10, line: 2})
+```
+
+And printing in a terminal will produce:
+
+```ruby
+print pie_chart
+# =>
+#      x**               * BTC 54.08%
+#   xxxx*****
+# ++++xx*******
+# ++++++*******          + BCH 27.55%
+# ++++++*******
+#   ++++*****
+#      +**               x LTC 18.37%
 ```
 
 ## Development
