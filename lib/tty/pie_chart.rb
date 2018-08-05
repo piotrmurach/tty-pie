@@ -75,9 +75,8 @@ module TTY
       total_value = total
       @data.map do |item|
         percent = (item[:value] * 100) / total_value.to_f
-        angle = percent * FULL_CIRCLE_DEGREES / 100.to_f
         color_fill = item[:fill] || fill
-        DataItem.new(item[:name], item[:value], percent, angle,
+        DataItem.new(item[:name], item[:value], percent,
                      item.fetch(:color, false), color_fill)
       end
     end

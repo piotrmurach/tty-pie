@@ -11,7 +11,7 @@ module TTY
 
       attr_accessor :percent
 
-      attr_accessor :angle
+      attr_writer :angle
 
       attr_accessor :color
 
@@ -20,14 +20,20 @@ module TTY
       # Creat a DataItem
       #
       # @api private
-      def initialize(name, value, percent, angle, color, fill)
+      def initialize(name, value, percent, color, fill)
         @name = name
         @value = value
         @color = color
         @percent = percent
-        @angle = angle
         @fill = fill
         @pastel = Pastel.new
+      end
+
+      # The item start angle
+      #
+      # @api private
+      def angle
+        percent * FULL_CIRCLE_DEGREES / 100.to_f
       end
 
       # Convert a data item into a legend label
