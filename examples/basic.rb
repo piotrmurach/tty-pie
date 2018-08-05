@@ -9,4 +9,4 @@ data = [
 
 pie = TTY::PieChart.new(data, radius: 10)
 
-puts pie.draw
+puts pie
