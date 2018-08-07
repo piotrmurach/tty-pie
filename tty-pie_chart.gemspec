@@ -13,10 +13,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://piotrmurach.github.io/tty"
   spec.license       = "MIT"
 
-  spec.files  = Dir.glob('lib/**/*.rb') + Dir.glob('bin/*')
-  spec.files += Dir.glob('[A-Z]*') + Dir.glob('[a-z]*\.*')
-  spec.files += Dir.glob('spec/**/*.rb')
-  spec.bindir        = "exe"
+  spec.files         = Dir['{lib,spec}/**/*.rb', '{bin,examples}/*', 'tty-pie_chart.gemspec']
+  spec.files        += Dir['README.md', 'CHANGELOG.md', 'LICENSE.txt', 'Rakefile']
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
