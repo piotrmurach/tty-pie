@@ -43,7 +43,7 @@ module TTY
     #
     # @api public
     def initialize(data, top: nil, left: nil, radius: 10, legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2)
-      @data = data
+      @data = data.dup
       @top = top
       @left = left
       @radius = radius
@@ -80,6 +80,19 @@ module TTY
                      item.fetch(:color, false), color_fill)
       end
     end
+
+    # Add a data item
+    #
+    # @param [Hash]
+    #
+    # @return [self]
+    #
+    # @api public
+    def add(item)
+      @data << item
+      self
+    end
+    alias << add
 
     # Draw a pie based on the provided data
     #
