@@ -81,38 +81,6 @@ module TTY
       end
     end
 
-    # All angles from the data to slice the pie
-    #
-    # @return [Array[Numeric]]
-    #
-    # @api private
-    def data_angles(items)
-      start_angle = 0
-      items.reduce([]) do |acc, item|
-        acc << start_angle + item.angle
-        start_angle += item.angle
-        acc
-      end
-    end
-
-    # The space between a legend and a chart
-    #
-    # @return [Integer]
-    #
-    # @api private
-    def legend_left
-      legend ? legend.fetch(:left, LEGEND_LEFT_SPACE) : LEGEND_LEFT_SPACE
-    end
-
-    # The space between each legend item
-    #
-    # @return [Integer]
-    #
-    # @api private
-    def legend_line
-      (legend ? legend.fetch(:line, LEGEND_LINE_SPACE) : LEGEND_LINE_SPACE) + 1
-    end
-
     # Draw a pie based on the provided data
     #
     # @return [String]
@@ -165,6 +133,44 @@ module TTY
     end
     alias to_s draw
 
+    private
+
+    # All angles from the data to slice the pie
+    #
+    # @return [Array[Numeric]]
+    #
+    # @api private
+    def data_angles(items)
+      start_angle = 0
+      items.reduce([]) do |acc, item|
+        acc << start_angle + item.angle
+        start_angle += item.angle
+        acc
+      end
+    end
+
+    # The space between a legend and a chart
+    #
+    # @return [Integer]
+    #
+    # @api private
+    def legend_left
+      legend ? legend.fetch(:left, LEGEND_LEFT_SPACE) : LEGEND_LEFT_SPACE
+    end
+
+    # The space between each legend item
+    #
+    # @return [Integer]
+    #
+    # @api private
+    def legend_line
+      (legend ? legend.fetch(:line, LEGEND_LINE_SPACE) : LEGEND_LINE_SPACE) + 1
+    end
+
+    # Select data item index based on angle
+    #
+    # @return [Integer]
+    #
     # @api private
     def select_data_item(angle, angles)
       angles.index { |a| (FULL_CIRCLE_DEGREES / 2 - angle) < a }
