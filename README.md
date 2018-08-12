@@ -217,8 +217,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the TTY::PieChart project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the TTY::PieChart project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/piotrmurach/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
 
 ## Copyright
 
-Copyright (c) 2018 Piotr Murach. See LICENSE for further details.
+Copyright (c) 2018 Piotr Murach. See [LICENSE.txt](https://github.com/piotrmurach/tty-pie_chart/blob/master/LICENSE.txt) for further details.
