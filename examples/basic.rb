@@ -7,6 +7,6 @@ data = [
   { name: 'ETH', value: 2350, color: :bright_cyan }
 ]
 
-pie = TTY::PieChart.new(data, radius: 10)
+pie = TTY::PieChart.new(data: data, radius: 10)
 
 puts pie
