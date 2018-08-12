@@ -63,7 +63,7 @@ data = [
 Then pass data to **TTY::PieChart** instance with a given radius:
 
 ```ruby
-pie_chart = TTY::PieChart.new(data, radius: 5)
+pie_chart = TTY::PieChart.new(data: data, radius: 5)
 ```
 
 and print the pie chart in your terminal window:
@@ -133,10 +133,20 @@ data = [
 
 There is no limit to the amount of data you can present, however there is a point of scale and legibility to be considered when printing in the terminals.
 
-You can add data to pie chart during initialization:
+You can add data to pie chart during initialization using `:data` keyword:
 
 ```ruby
-pie_chart = TTY::PieChart.new(data)
+pie_chart = TTY::PieChart.new(data: data)
+```
+
+Alternatively, you can delay adding data later with `add` or `<<` methods:
+
+```ruby
+pie_chart = TTY::PieChart.new
+pie_chart << { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' }
+pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
+pie_chart << { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' }
+pie_chart << { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
 ```
 
 ### 2.2 draw
@@ -153,7 +163,7 @@ print pie_chart.draw
 If you don't provide location for you pie chart it will be printed at the current cursor location. In order to absolutely position the chart use `:left` and `:top` keyword arguments. For example, if you wanted to position the pie chart at `50th`column and `10th` row:
 
 ```ruby
-TTY::PieChart.new(data, left: 50, top: 10)
+TTY::PieChart.new(data: data, left: 50, top: 10)
 ```
 
 ### 2.4 radius
@@ -161,7 +171,7 @@ TTY::PieChart.new(data, left: 50, top: 10)
 By default a pie chart is rendered with a `10`radius, you can change this using the `:radius` keyword:
 
 ```ruby
-TTY::PieChart.new(data, radius: 5)
+TTY::PieChart.new(data: data, radius: 5)
 ```
 
 ### 2.5 legend
@@ -184,7 +194,7 @@ You can control how the legend is displayed using the `:legend` keyword and hash
 For example, to place a legend `10` columns away from the pie chart and separate each label by `2` lines do:
 
 ```ruby
-pie_chart = TTY::PieChart.new(data, radius: 3, legend: {left: 10, line: 2})
+pie_chart = TTY::PieChart.new(data: data, radius: 3, legend: {left: 10, line: 2})
 ```
 
 And printing in a terminal will produce:
