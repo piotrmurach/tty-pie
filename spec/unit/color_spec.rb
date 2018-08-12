@@ -7,7 +7,7 @@ RSpec.describe TTY::PieChart, ':color option' do
       { name: 'BCH', value: 3045, fill: '+' },
       { name: 'LTC', value: 2030, fill: 'x' }
     ]
-    pie = TTY::PieChart.new(data, radius: 2)
+    pie = TTY::PieChart.new(data: data, radius: 2)
 
     output = pie.draw
 
@@ -26,7 +26,7 @@ RSpec.describe TTY::PieChart, ':color option' do
       { name: 'BCH', value: 3045, color: :bright_green },
       { name: 'LTC', value: 2030, color: :bright_magenta }
     ]
-    pie = TTY::PieChart.new(data, radius: 2)
+    pie = TTY::PieChart.new(data: data, radius: 2)
 
     output = pie.draw
 
@@ -48,7 +48,7 @@ RSpec.describe TTY::PieChart, ':color option' do
       { name: 'BCH', value: 3045, color: :bright_green },
       { name: 'LTC', value: 2030, color: :bright_magenta }
     ]
-    pie = TTY::PieChart.new(data, radius: 2, left: 50, top: 10)
+    pie = TTY::PieChart.new(data: data, radius: 2, left: 50, top: 10)
 
     output = pie.draw
 
@@ -70,7 +70,7 @@ RSpec.describe TTY::PieChart, ':color option' do
       { name: 'BCH', value: 3045, color: :bright_green },
       { name: 'LTC', value: 2030, color: :bright_magenta }
     ]
-    pie = TTY::PieChart.new(data, radius: 2, left: 50, top: 10, legend: false)
+    pie = TTY::PieChart.new(data: data, radius: 2, left: 50, top: 10, legend: false)
 
     output = pie.draw
 

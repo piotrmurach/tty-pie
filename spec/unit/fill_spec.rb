@@ -10,7 +10,7 @@ RSpec.describe TTY::PieChart, ':fill option' do
   }
 
   it "draws a pie chart with custom fill per data item" do
-     pie = TTY::PieChart.new(data, radius: 2)
+     pie = TTY::PieChart.new(data: data, radius: 2)
 
      output = pie.draw
 

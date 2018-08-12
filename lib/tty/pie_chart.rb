@@ -42,7 +42,7 @@ module TTY
     # @param [Float] aspect_ratio
     #
     # @api public
-    def initialize(data, top: nil, left: nil, radius: 10, legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2)
+    def initialize(data: [], top: nil, left: nil, radius: 10, legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2)
       @data = data.dup
       @top = top
       @left = left
