@@ -42,10 +42,11 @@ Or install it yourself as:
 * [1. Usage](#1-usage)
 * [2. Interface](#2-interface)
   * [2.1 data](#21-data)
-  * [2.2 draw](#22-draw)
-  * [2.3 position](#23-position)
-  * [2.4 radius](#24-radius)
-  * [2.5 legend](#25-legend)
+  * [2.2 add](#22-add)
+  * [2.3 draw](#23-draw)
+  * [2.4 position](#24-position)
+  * [2.5 radius](#25-radius)
+  * [2.6 legend](#26-legend)
 
 ## 1. Usage
 
@@ -149,16 +150,36 @@ pie_chart << { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' }
 pie_chart << { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
 ```
 
-### 2.2 draw
+### 2.2 add
 
-Once a pie chart has been initialized use the `draw` method to return a string representation of the chart. To actually show it in a terminal, you need to print it:
+You can also set data for the pie chart using the `add` or `<<` method calls. Once a pie chart is initialized, you can add data items:
+
+```ruby
+pie_chart = TTY::PieChart.new
+pie_chart << { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' }
+pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
+...
+```
+
+### 2.3 draw
+
+Once a pie chart has been initialized use the `draw` or `to_s` method to return a string representation of the chart.
+
+To actually show it in a terminal, you need to print it:
 
 ```ruby
 print pie_chart.draw
 # => this will render chart in terminal
 ```
 
-### 2.3 position
+You can skip calling any method and simply print:
+
+```ruby
+print pie_chart
+# => this will render chart in terminal
+```
+
+### 2.4 position
 
 If you don't provide location for you pie chart it will be printed at the current cursor location. In order to absolutely position the chart use `:left` and `:top` keyword arguments. For example, if you wanted to position the pie chart at `50th`column and `10th` row:
 
@@ -166,9 +187,9 @@ If you don't provide location for you pie chart it will be printed at the curren
 TTY::PieChart.new(data: data, left: 50, top: 10)
 ```
 
-### 2.4 radius
+### 2.5 radius
 
-By default a pie chart is rendered with a `10`radius, you can change this using the `:radius` keyword:
+By default, a pie chart is rendered with a radius of `10`, you can change this using the `:radius` keyword:
 
 ```ruby
 TTY::PieChart.new(data: data, radius: 5)
