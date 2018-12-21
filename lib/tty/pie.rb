@@ -3,11 +3,11 @@
 require 'pastel'
 require 'tty-cursor'
 
-require_relative 'pie_chart/data_item'
-require_relative 'pie_chart/version'
+require_relative 'pie/data_item'
+require_relative 'pie/version'
 
 module TTY
-  class PieChart
+  class Pie
     FULL_CIRCLE_DEGREES = 360
 
     POINT_SYMBOL = '•'
@@ -199,5 +199,5 @@ module TTY
     def radian_to_degree(radians)
       radians * 180 / Math::PI
     end
-  end # PieChart
+  end # Pie
 end # TTY

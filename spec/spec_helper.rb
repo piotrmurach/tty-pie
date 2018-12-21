@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV['COVERAGE'] || ENV['TRAVIS']
   require 'simplecov'
   require 'coveralls'
@@ -14,7 +16,7 @@ if ENV['COVERAGE'] || ENV['TRAVIS']
 end
 
 require "bundler/setup"
-require "tty/pie_chart"
+require "tty/pie"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

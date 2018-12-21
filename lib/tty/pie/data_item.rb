@@ -3,7 +3,7 @@
 require 'pastel'
 
 module TTY
-  class PieChart
+  class Pie
     class DataItem
       attr_accessor :name
 
@@ -47,5 +47,5 @@ module TTY
         "#{label} #{name} #{percent_fmt}%"
       end
     end
-  end # PieChart
+  end # Pie
 end # TTY

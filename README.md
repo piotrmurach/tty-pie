@@ -1,32 +1,32 @@
-# TTY:PieChart [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
+# TTY:Pie [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
 
-[![Gem Version](https://badge.fury.io/rb/tty-pie_chart.svg)][gem]
-[![Build Status](https://secure.travis-ci.org/piotrmurach/tty-pie_chart.svg?branch=master)][travis]
+[![Gem Version](https://badge.fury.io/rb/tty-pie.svg)][gem]
+[![Build Status](https://secure.travis-ci.org/piotrmurach/tty-pie.svg?branch=master)][travis]
 [![Build status](https://ci.appveyor.com/api/projects/status/yv6bry8a5w7awiwp?svg=true)][appveyor]
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfac05073e1549e9dbb6/maintainability)][codeclimate]
-[![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-pie_chart/badge.svg)][coverage]
-[![Inline docs](http://inch-ci.org/github/piotrmurach/tty-pie_chart.svg?branch=master)][inchpages]
+[![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-pie/badge.svg)][coverage]
+[![Inline docs](http://inch-ci.org/github/piotrmurach/tty-pie.svg?branch=master)][inchpages]
 
 [gitter]: https://gitter.im/piotrmurach/tty
-[gem]: http://badge.fury.io/rb/tty-pie_chart
-[travis]: http://travis-ci.org/piotrmurach/tty-pie_chart
-[appveyor]: https://ci.appveyor.com/project/piotrmurach/tty-pie_chart
-[codeclimate]: https://codeclimate.com/github/piotrmurach/tty-pie_chart/maintainability
-[coverage]: https://coveralls.io/github/piotrmurach/tty-pie_chart
-[inchpages]: http://inch-ci.org/github/piotrmurach/tty-pie_chart
+[gem]: http://badge.fury.io/rb/tty-pie
+[travis]: http://travis-ci.org/piotrmurach/tty-pie
+[appveyor]: https://ci.appveyor.com/project/piotrmurach/tty-pie
+[codeclimate]: https://codeclimate.com/github/piotrmurach/tty-pie/maintainability
+[coverage]: https://coveralls.io/github/piotrmurach/tty-pie
+[inchpages]: http://inch-ci.org/github/piotrmurach/tty-pie
 
 > Draw pie charts in your terminal window
 
-**TTY::PieChart** provides pie chart drawing component for [TTY](https://github.com/piotrmurach/tty) toolkit.
+**TTY::Pie** provides pie chart drawing component for [TTY](https://github.com/piotrmurach/tty) toolkit.
 
-![Pie chart drawing](https://cdn.rawgit.com/piotrmurach/tty-pie_chart/master/assets/tty-pie_chart_drawing_crypto.png)
+![Pie chart drawing](https://cdn.rawgit.com/piotrmurach/tty-pie/master/assets/tty-pie_chart_drawing_crypto.png)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tty-pie_chart'
+gem 'tty-pie'
 ```
 
 And then execute:
@@ -35,7 +35,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install tty-pie_chart
+    $ gem install tty-pie
 
 ## Contents
 
@@ -61,10 +61,10 @@ data = [
 ]
 ```
 
-Then pass data to **TTY::PieChart** instance with a given radius:
+Then pass data to **TTY::Pie** instance with a given radius:
 
 ```ruby
-pie_chart = TTY::PieChart.new(data: data, radius: 5)
+pie_chart = TTY::Pie.new(data: data, radius: 5)
 ```
 
 and print the pie chart in your terminal window:
@@ -137,13 +137,13 @@ There is no limit to the amount of data you can present, however there is a poin
 You can add data to pie chart during initialization using `:data` keyword:
 
 ```ruby
-pie_chart = TTY::PieChart.new(data: data)
+pie_chart = TTY::Pie.new(data: data)
 ```
 
 Alternatively, you can delay adding data later with `add` or `<<` methods:
 
 ```ruby
-pie_chart = TTY::PieChart.new
+pie_chart = TTY::Pie.new
 pie_chart << { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' }
 pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
 pie_chart << { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' }
@@ -155,7 +155,7 @@ pie_chart << { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
 You can also set data for the pie chart using the `add` or `<<` method calls. Once a pie chart is initialized, you can add data items:
 
 ```ruby
-pie_chart = TTY::PieChart.new
+pie_chart = TTY::Pie.new
 pie_chart << { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' }
 pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
 ...
@@ -184,7 +184,7 @@ print pie_chart
 If you don't provide location for you pie chart it will be printed at the current cursor location. In order to absolutely position the chart use `:left` and `:top` keyword arguments. For example, if you wanted to position the pie chart at `50th`column and `10th` row:
 
 ```ruby
-TTY::PieChart.new(data: data, left: 50, top: 10)
+TTY::Pie.new(data: data, left: 50, top: 10)
 ```
 
 ### 2.5 radius
@@ -192,7 +192,7 @@ TTY::PieChart.new(data: data, left: 50, top: 10)
 By default, a pie chart is rendered with a radius of `10`, you can change this using the `:radius` keyword:
 
 ```ruby
-TTY::PieChart.new(data: data, radius: 5)
+TTY::Pie.new(data: data, radius: 5)
 ```
 
 ### 2.5 legend
@@ -215,7 +215,7 @@ You can control how the legend is displayed using the `:legend` keyword and hash
 For example, to place a legend `10` columns away from the pie chart and separate each label by `2` lines do:
 
 ```ruby
-pie_chart = TTY::PieChart.new(data: data, radius: 3, legend: {left: 10, line: 2})
+pie_chart = TTY::Pie.new(data: data, radius: 3, legend: {left: 10, line: 2})
 ```
 
 And printing in a terminal will produce:
@@ -248,7 +248,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the TTY::PieChart project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/piotrmurach/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the TTY::Pie project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/piotrmurach/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
 
 ## Copyright
 

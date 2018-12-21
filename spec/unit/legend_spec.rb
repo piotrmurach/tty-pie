@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::PieChart, ':legend option' do
+RSpec.describe TTY::Pie, ':legend option' do
   it "draws legend at default location with 1 line separator" do
     data = [
       { name: 'BTC', value: 5977, fill: '*' },
@@ -8,7 +8,7 @@ RSpec.describe TTY::PieChart, ':legend option' do
       { name: 'LTC', value: 2030, fill: 'x' }
     ]
 
-    pie = TTY::PieChart.new(data: data, radius: 2)
+    pie = TTY::Pie.new(data: data, radius: 2)
 
     output = pie.draw
 
@@ -28,7 +28,7 @@ RSpec.describe TTY::PieChart, ':legend option' do
       { name: 'LTC', value: 2030, fill: 'x' }
     ]
 
-    pie = TTY::PieChart.new(data: data, radius: 2, legend: {left: 0, line: 0})
+    pie = TTY::Pie.new(data: data, radius: 2, legend: {left: 0, line: 0})
 
     output = pie.draw
 
@@ -48,7 +48,7 @@ RSpec.describe TTY::PieChart, ':legend option' do
       { name: 'LTC', value: 2030, fill: 'x' }
     ]
 
-    pie = TTY::PieChart.new(data: data, radius: 3, legend: {left: 10, line: 2})
+    pie = TTY::Pie.new(data: data, radius: 3, legend: {left: 10, line: 2})
 
     output = pie.draw
 

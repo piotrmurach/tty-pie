@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::PieChart, '#draw' do
+RSpec.describe TTY::Pie, '#draw' do
   let(:data) {
     [
       { name: 'BTC', value: 5977 },
@@ -10,7 +10,7 @@ RSpec.describe TTY::PieChart, '#draw' do
   }
 
   it "draws a pie chart with legend and without cursor positioning" do
-    pie = TTY::PieChart.new(data: data, radius: 2)
+    pie = TTY::Pie.new(data: data, radius: 2)
 
     output = pie.draw
 
@@ -24,7 +24,7 @@ RSpec.describe TTY::PieChart, '#draw' do
   end
 
   it "draws a pie chart without legend and without cursor positioning" do
-    pie = TTY::PieChart.new(data: data, radius: 2, legend: false)
+    pie = TTY::Pie.new(data: data, radius: 2, legend: false)
 
     output = pie.draw
 
@@ -38,7 +38,7 @@ RSpec.describe TTY::PieChart, '#draw' do
   end
 
   it "draw a pie chart with legend and cursor positioning" do
-    pie = TTY::PieChart.new(data: data, radius: 2, left: 50, top: 10)
+    pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10)
 
     output = pie.draw
 
@@ -53,7 +53,7 @@ RSpec.describe TTY::PieChart, '#draw' do
   end
 
   it "draw a pie chart without legend and with cursor positioning" do
-    pie = TTY::PieChart.new(data: data, radius: 2, left: 50, top: 10, legend: false)
+    pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false)
 
     output = pie.draw
 

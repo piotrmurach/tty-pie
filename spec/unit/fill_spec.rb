@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::PieChart, ':fill option' do
+RSpec.describe TTY::Pie, ':fill option' do
   let(:data) {
     [
       { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
@@ -10,7 +10,7 @@ RSpec.describe TTY::PieChart, ':fill option' do
   }
 
   it "draws a pie chart with custom fill per data item" do
-     pie = TTY::PieChart.new(data: data, radius: 2)
+     pie = TTY::Pie.new(data: data, radius: 2)
 
      output = pie.draw
 

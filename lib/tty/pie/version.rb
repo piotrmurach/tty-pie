@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TTY
-  class PieChart
+  class Pie
     VERSION = "0.1.0".freeze
-  end # PieChart
+  end # Pie
 end # TTY
