@@ -1,8 +1,12 @@
+<div align="center">
+  <a href="https://piotrmurach.github.io/tty" target="_blank"><img width="130" src="https://github.com/piotrmurach/tty/blob/master/images/tty.png" alt="tty logo" /></a>
+</div>
+
 # TTY:Pie [![Gitter](https://badges.gitter.im/Join%20Chat.svg)][gitter]
 
 [![Gem Version](https://badge.fury.io/rb/tty-pie.svg)][gem]
 [![Build Status](https://secure.travis-ci.org/piotrmurach/tty-pie.svg?branch=master)][travis]
-[![Build status](https://ci.appveyor.com/api/projects/status/yv6bry8a5w7awiwp?svg=true)][appveyor]
+[![Build status](https://ci.appveyor.com/api/projects/status/9n69xpw64sylqh2y?svg=true)][appveyor]
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfac05073e1549e9dbb6/maintainability)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-pie/badge.svg)][coverage]
 [![Inline docs](http://inch-ci.org/github/piotrmurach/tty-pie.svg?branch=master)][inchpages]
@@ -19,7 +23,7 @@
 
 **TTY::Pie** provides pie chart drawing component for [TTY](https://github.com/piotrmurach/tty) toolkit.
 
-![Pie chart drawing](https://cdn.rawgit.com/piotrmurach/tty-pie/master/assets/tty-pie_chart_drawing_crypto.png)
+![Pie chart drawing](https://github.com/piotrmurach/tty-pie/blob/master/assets/tty-pie_chart_drawing_crypto.png)
 
 ## Installation
 
