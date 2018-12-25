@@ -47,10 +47,11 @@ Or install it yourself as:
 * [2. Interface](#2-interface)
   * [2.1 data](#21-data)
   * [2.2 add](#22-add)
-  * [2.3 draw](#23-draw)
-  * [2.4 position](#24-position)
-  * [2.5 radius](#25-radius)
-  * [2.6 legend](#26-legend)
+  * [2.3 update](#23-update)
+  * [2.4 draw](#24-draw)
+  * [2.5 position](#25-position)
+  * [2.6 radius](#26-radius)
+  * [2.7 legend](#27-legend)
 
 ## 1. Usage
 
@@ -165,7 +166,26 @@ pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
 ...
 ```
 
-### 2.3 draw
+### 2.3 update
+
+To replace current data completely with the new use `update`:
+
+```ruby
+data = [
+  { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
+  { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
+]
+pie_chart = TTY::Pie.new(data: data)
+
+new_data = [
+  { name: 'BTC', value: 3400, color: :bright_yellow, fill: '*' },
+  { name: 'BCH', value: 1200, color: :bright_green, fill: 'x' },
+]
+
+pie_chart.update(new_data)
+```
+
+### 2.4 draw
 
 Once a pie chart has been initialized use the `draw` or `to_s` method to return a string representation of the chart.
 
@@ -183,7 +203,7 @@ print pie_chart
 # => this will render chart in terminal
 ```
 
-### 2.4 position
+### 2.5 position
 
 If you don't provide location for you pie chart it will be printed at the current cursor location. In order to absolutely position the chart use `:left` and `:top` keyword arguments. For example, if you wanted to position the pie chart at `50th`column and `10th` row:
 
@@ -191,7 +211,7 @@ If you don't provide location for you pie chart it will be printed at the curren
 TTY::Pie.new(data: data, left: 50, top: 10)
 ```
 
-### 2.5 radius
+### 2.6 radius
 
 By default, a pie chart is rendered with a radius of `10`, you can change this using the `:radius` keyword:
 
@@ -199,7 +219,7 @@ By default, a pie chart is rendered with a radius of `10`, you can change this u
 TTY::Pie.new(data: data, radius: 5)
 ```
 
-### 2.5 legend
+### 2.7 legend
 
 Provided the following data:
 
