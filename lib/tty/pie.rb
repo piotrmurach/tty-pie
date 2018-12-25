@@ -32,6 +32,10 @@ module TTY
 
     # Create pie chart
     #
+    # @example
+    #   data = [ { name: 'BTC', value: 5977, fill: '*' } ]
+    #   pie_chart = TTY::Pie.new(data: data, radius: 2)
+    #
     # @param [Array[Hash]] data
     #   the data to display in each slice
     # @param [Integer] top
@@ -93,6 +97,15 @@ module TTY
       self
     end
     alias << add
+
+    # Replace current data with new set
+    #
+    # @param [Array[Hash]]
+    #
+    # @api public
+    def update(data)
+      @data = data
+    end
 
     # Draw a pie based on the provided data
     #
