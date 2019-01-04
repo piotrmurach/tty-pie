@@ -20,6 +20,25 @@ RSpec.describe TTY::Pie, ':color option' do
     ].join)
   end
 
+  it "draws a pie chart with colors as a parameter" do
+    data = [
+      { name: 'BTC', value: 5977, fill: '*' },
+      { name: 'BCH', value: 3045, fill: '+' },
+      { name: 'LTC', value: 2030, fill: 'x' }
+    ]
+    pie = TTY::Pie.new(data: data, radius: 2, colors: %i[yellow green magenta])
+
+    output = pie.draw
+    expected_output = [
+      "   \e[35mx\e[0m\e[33m*\e[0m\e[33m*\e[0m       \e[33m*\e[0m BTC 54.08%\n",
+      " \e[32m+\e[0m\e[35mx\e[0m\e[35mx\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\n",
+      "\e[32m+\e[0m\e[32m+\e[0m\e[32m+\e[0m\e[32m+\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m    \e[32m+\e[0m BCH 27.55%\n",
+      " \e[32m+\e[0m\e[32m+\e[0m\e[32m+\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\n",
+      "   \e[32m+\e[0m\e[33m*\e[0m\e[33m*\e[0m       \e[35mx\e[0m LTC 18.37%\n"
+    ].join
+    expect(output).to eq(expected_output)
+  end
+
   it "draws a pie chart with colors" do
     data = [
       { name: 'BTC', value: 5977, color: :bright_yellow },

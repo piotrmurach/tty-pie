@@ -26,7 +26,7 @@ module TTY
         @color = color
         @percent = percent
         @fill = fill
-        @pastel = Pastel.new
+        @pastel = Pastel.new(enabled: !!color)
       end
 
       # The item start angle

@@ -24,4 +24,24 @@ RSpec.describe TTY::Pie, ':fill option' do
         "       \e[95mx\e[0m LTC 18.37%\n"
      ].join)
   end
+
+  it "draws with custom fill chars per instance" do
+     data_without_fill = data.map { |item| item.delete(:fill); item }
+     pie = TTY::Pie.new(data: data_without_fill, radius: 2, fill: %w[* + x])
+
+     output = pie.draw
+
+     expected_output = [
+        "   \e[95mx\e[0m\e[93m*\e[0m\e[93m*\e[0m",
+        "       \e[93m*\e[0m BTC 54.08%\n",
+        " \e[92m+\e[0m\e[95mx\e[0m\e[95mx\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m\n\e[92m+\e[0m\e[92m+\e[0m\e[92m+\e[0m\e[92m+\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m",
+        "    \e[92m+\e[0m BCH 27.55%\n",
+        " \e[92m+\e[0m\e[92m+\e[0m\e[92m+\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m\e[93m*\e[0m\n",
+        "   \e[92m+\e[0m\e[93m*\e[0m\e[93m*\e[0m",
+        "       \e[95mx\e[0m LTC 18.37%\n"
+
+     ].join
+
+     expect(output).to eq(expected_output)
+  end
 end

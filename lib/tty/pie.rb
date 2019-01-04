@@ -28,6 +28,8 @@ module TTY
 
     attr_reader :fill
 
+    attr_reader :colors
+
     attr_reader :legend
 
     # Create pie chart
@@ -46,18 +48,21 @@ module TTY
     # @param [Float] aspect_ratio
     #
     # @api public
-    def initialize(data: [], top: nil, left: nil, radius: 10, legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2)
+    def initialize(data: [], top: nil, left: nil, radius: 10,
+                   legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2,
+                   colors: [])
       @data = data.dup
       @top = top
       @left = left
       @radius = radius
       @legend = legend
-      @fill = fill
+      @fill = Array(fill)
+      @colors = Array(colors)
       @aspect_ratio = aspect_ratio
       @center_x = (left || 0) + radius * aspect_ratio
       @center_y = (top || 0) + radius
 
-      @pastel = Pastel.new
+      @pastel = Pastel.new(enabled: !!colors)
       @cursor = TTY::Cursor
     end
 
@@ -77,11 +82,11 @@ module TTY
     # @api private
     def data_items
       total_value = total
-      @data.map do |item|
+      @data.each_with_index.map do |item, i|
         percent = (item[:value] * 100) / total_value.to_f
-        color_fill = item[:fill] || fill
-        DataItem.new(item[:name], item[:value], percent,
-                     item.fetch(:color, false), color_fill)
+        color_fill = item[:fill] || fill[i % fill.size]
+        color = colors && !colors.empty? ? colors[i % colors.size] : item.fetch(:color, false)
+        DataItem.new(item[:name], item[:value], percent, color, color_fill)
       end
     end
 
