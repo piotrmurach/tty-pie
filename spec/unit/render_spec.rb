@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::Pie, '#draw' do
+RSpec.describe TTY::Pie, '#render' do
   let(:data) {
     [
       { name: 'BTC', value: 5977 },
@@ -9,10 +9,10 @@ RSpec.describe TTY::Pie, '#draw' do
     ]
   }
 
-  it "draws a pie chart with legend and without cursor positioning" do
+  it "renders a pie chart with legend and without cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
        "   •••       • BTC 54.08%\n",
@@ -23,10 +23,10 @@ RSpec.describe TTY::Pie, '#draw' do
     ].join)
   end
 
-  it "draws a pie chart without legend and without cursor positioning" do
+  it "renders a pie chart without legend and without cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2, legend: false)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
        "   •••\n",
@@ -37,10 +37,10 @@ RSpec.describe TTY::Pie, '#draw' do
     ].join)
   end
 
-  it "draw a pie chart with legend and cursor positioning" do
+  it "render a pie chart with legend and cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "\e[11;54H•\e[11;55H•\e[11;56H•\e[11;63H• BTC 54.08%\n",
@@ -52,10 +52,10 @@ RSpec.describe TTY::Pie, '#draw' do
     ].join)
   end
 
-  it "draw a pie chart without legend and with cursor positioning" do
+  it "render a pie chart without legend and with cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "\e[11;54H\•\e[11;55H•\e[11;56H•\n",

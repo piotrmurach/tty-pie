@@ -8,7 +8,7 @@ RSpec.describe TTY::Pie, '#add' do
     pie << { name: 'BCH', value: 3045, fill: '+' }
     pie << { name: 'LTC', value: 2030, fill: 'x' }
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "   x**       * BTC 54.08%\n",

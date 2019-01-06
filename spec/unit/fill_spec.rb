@@ -9,10 +9,10 @@ RSpec.describe TTY::Pie, ':fill option' do
     ]
   }
 
-  it "draws a pie chart with custom fill per data item" do
+  it "renders a pie chart with custom fill per data item" do
      pie = TTY::Pie.new(data: data, radius: 2)
 
-     output = pie.draw
+     output = pie.render
 
      expect(output).to eq([
         "   \e[95mx\e[0m\e[93m*\e[0m\e[93m*\e[0m",
@@ -25,11 +25,11 @@ RSpec.describe TTY::Pie, ':fill option' do
      ].join)
   end
 
-  it "draws with custom fill chars per instance" do
+  it "renders with custom fill chars per instance" do
      data_without_fill = data.map { |item| item.delete(:fill); item }
      pie = TTY::Pie.new(data: data_without_fill, radius: 2, fill: %w[* + x])
 
-     output = pie.draw
+     output = pie.render
 
      expected_output = [
         "   \e[95mx\e[0m\e[93m*\e[0m\e[93m*\e[0m",

@@ -117,7 +117,7 @@ module TTY
     # @return [String]
     #
     # @api public
-    def draw
+    def render
       items = data_items
       angles = data_angles(items)
       output = []
@@ -162,7 +162,7 @@ module TTY
 
       output.join
     end
-    alias to_s draw
+    alias to_s render
 
     private
 

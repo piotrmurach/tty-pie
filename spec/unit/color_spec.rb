@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe TTY::Pie, ':color option' do
-  it "draws a pie chart without colors" do
+  it "renders a pie chart without colors" do
     data = [
       { name: 'BTC', value: 5977, fill: '*' },
       { name: 'BCH', value: 3045, fill: '+' },
@@ -9,7 +9,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ]
     pie = TTY::Pie.new(data: data, radius: 2)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "   x**       * BTC 54.08%\n",
@@ -20,7 +20,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ].join)
   end
 
-  it "draws a pie chart with colors as a parameter" do
+  it "renders a pie chart with colors as a parameter" do
     data = [
       { name: 'BTC', value: 5977, fill: '*' },
       { name: 'BCH', value: 3045, fill: '+' },
@@ -28,7 +28,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ]
     pie = TTY::Pie.new(data: data, radius: 2, colors: %i[yellow green magenta])
 
-    output = pie.draw
+    output = pie.render
     expected_output = [
       "   \e[35mx\e[0m\e[33m*\e[0m\e[33m*\e[0m       \e[33m*\e[0m BTC 54.08%\n",
       " \e[32m+\e[0m\e[35mx\e[0m\e[35mx\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\e[33m*\e[0m\n",
@@ -39,7 +39,7 @@ RSpec.describe TTY::Pie, ':color option' do
     expect(output).to eq(expected_output)
   end
 
-  it "draws a pie chart with colors" do
+  it "renders a pie chart with colors" do
     data = [
       { name: 'BTC', value: 5977, color: :bright_yellow },
       { name: 'BCH', value: 3045, color: :bright_green },
@@ -47,7 +47,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ]
     pie = TTY::Pie.new(data: data, radius: 2)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
        "   \e[95m•\e[0m\e[93m•\e[0m\e[93m•\e[0m",
@@ -61,7 +61,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ].join)
   end
 
-  it "draw a pie chart with legend and cursor positioning" do
+  it "renders a pie chart with legend and cursor positioning" do
     data = [
       { name: 'BTC', value: 5977, color: :bright_yellow },
       { name: 'BCH', value: 3045, color: :bright_green },
@@ -69,7 +69,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ]
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "\e[11;54H\e[95m•\e[0m\e[11;55H\e[93m•\e[0m\e[11;56H\e[93m•\e[0m",
@@ -83,7 +83,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ].join)
   end
 
-  it "draw a pie chart without legend and with cursor positioning" do
+  it "renders a pie chart without legend and with cursor positioning" do
     data = [
       { name: 'BTC', value: 5977, color: :bright_yellow },
       { name: 'BCH', value: 3045, color: :bright_green },
@@ -91,7 +91,7 @@ RSpec.describe TTY::Pie, ':color option' do
     ]
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "\e[11;54H\e[95m•\e[0m\e[11;55H\e[93m•\e[0m\e[11;56H\e[93m•\e[0m\n",

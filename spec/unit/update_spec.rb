@@ -6,7 +6,7 @@ RSpec.describe TTY::Pie, '#update' do
 
     pie = TTY::Pie.new(data: data, radius: 2)
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "   ***\n",
@@ -18,7 +18,7 @@ RSpec.describe TTY::Pie, '#update' do
 
     pie.update([{name: 'LTC', value: 2030, fill: 'x'}])
 
-    output = pie.draw
+    output = pie.render
 
     expect(output).to eq([
       "   xxx\n",
