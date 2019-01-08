@@ -62,4 +62,84 @@ RSpec.describe TTY::Pie, ':legend option' do
       "     +**               x LTC 18.37%\n"
     ].join)
   end
+
+  it "renders legend with a custom format" do
+    data = [
+      { name: 'BTC', value: 5977, fill: '*' },
+      { name: 'BCH', value: 3045, fill: '+' },
+      { name: 'LTC', value: 2030, fill: 'x' }
+    ]
+
+    pie = TTY::Pie.new(
+      data: data,
+      radius: 2,
+      legend: {
+        format: "%<label>s %<name>s %<value>d (%<percent>.2f%%)"
+      }
+    )
+
+    output = pie.render
+
+    expect(output).to eq([
+      "   x**       * BTC 5977 (54.08%)\n",
+      " +xx****\n",
+      "++++*****    + BCH 3045 (27.55%)\n",
+      " +++****\n",
+      "   +**       x LTC 2030 (18.37%)\n"
+    ].join)
+  end
+
+  it "renders legend with a custom format & value as currency" do
+    data = [
+      { name: 'BTC', value: 5977.12345, fill: '*' },
+      { name: 'BCH', value: 3045.2, fill: '+' },
+      { name: 'LTC', value: 2030.444, fill: 'x' }
+    ]
+
+    pie = TTY::Pie.new(
+      data: data,
+      radius: 2,
+      legend: {
+        format: "%<label>s %<name>s $%<currency>s (%<percent>.0f%%)"
+      }
+    )
+
+    output = pie.render
+
+    expect(output).to eq([
+      "   x**       * BTC $5,977.12 (54%)\n",
+      " +xx****\n",
+      "++++*****    + BCH $3,045.20 (28%)\n",
+      " +++****\n",
+      "   +**       x LTC $2,030.44 (18%)\n"
+    ].join)
+  end
+
+  it "renders legend with a custom format and currency precision & delimiter" do
+    data = [
+      { name: 'BTC', value: 5977.12345, fill: '*' },
+      { name: 'BCH', value: 3045.2, fill: '+' },
+      { name: 'LTC', value: 2030.444, fill: 'x' }
+    ]
+
+    pie = TTY::Pie.new(
+      data: data,
+      radius: 2,
+      legend: {
+        format: "%<label>s %<name>s $%<currency>s (%<percent>.0f%%)",
+        precision: 3,
+        delimiter: '*'
+      }
+    )
+
+    output = pie.render
+
+    expect(output).to eq([
+      "   x**       * BTC $5*977.123 (54%)\n",
+      " +xx****\n",
+      "++++*****    + BCH $3*045.200 (28%)\n",
+      " +++****\n",
+      "   +**       x LTC $2*030.444 (18%)\n"
+    ].join)
+  end
 end

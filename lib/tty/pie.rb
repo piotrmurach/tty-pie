@@ -43,7 +43,7 @@ module TTY
     # @param [Integer] top
     # @param [Integer] left
     # @param [Integer] radius
-    # @param [Boolean] legend
+    # @param [Hash,Boolean] legend
     # @param [String] fill
     # @param [Float] aspect_ratio
     #
@@ -122,7 +122,7 @@ module TTY
       angles = data_angles(items)
       output = []
 
-      labels = items.map(&:to_label)
+      labels = items.map { |item| item.to_label(legend) }
       label_vert_space  = legend_line
       label_horiz_space = legend_left
       label_offset  = labels.size / 2
