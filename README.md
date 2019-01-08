@@ -52,6 +52,7 @@ Or install it yourself as:
   * [2.5 position](#25-position)
   * [2.6 radius](#26-radius)
   * [2.7 legend](#27-legend)
+    * [2.7.1 format](#271-format)
 
 ## 1. Usage
 
@@ -235,6 +236,9 @@ You can control how the legend is displayed using the `:legend` keyword and hash
 
 * `:left` - used to determine spacing between a chart and a legend, defaults to `4` columns
 * `:line` - used to determine spacing between legend labels, defaults to `1` line
+* `:format` - used to format a display label using template named strings
+* `:precision` - used to determine currency display decimal places, defaults to `2`
+* `:delimiter` - used to set thousands delimiter in currency format
 
 For example, to place a legend `10` columns away from the pie chart and separate each label by `2` lines do:
 
@@ -254,6 +258,110 @@ print pie_chart
 # ++++++*******
 #   ++++*****
 #      +**               x LTC 18.37%
+```
+
+#### 2.7.1 format
+
+The `:format` uses Ruby's [format sequences](https://ruby-doc.org/core-2.5.0/Kernel.html#method-i-format) and named strings placeholders:
+
+* `<label>` - the icon matching pie chart display
+* `<name>` - the label name provided in data
+* `<value>` - the label value provided in data, by default not displayed
+* `<currency>` - the label value formatted as currency
+* `<percent>` - the percent automatically calculated from data
+
+By default the label is formatted according to the following pattern with named strings:
+
+```ruby
+"%<label>s %<name>s %<percent>.2f%%"
+```
+
+Given data items:
+
+```ruby
+data = [
+  { name: 'BTC', value: 5977.12345, fill: '*' },
+  { name: 'BCH', value: 3045.2, fill: '+' },
+  { name: 'LTC', value: 2030.444, fill: 'x' }
+]
+```
+
+The legend will show:
+
+```ruby
+# =>
+#      x**       * BTC 54.08%
+#   xxxx*****
+# ++++xx*******
+# ++++++*******  + BCH 27.55%
+# ++++++*******
+#   ++++*****
+#      +**       x LTC 18.37%
+```
+
+To display value together with percent, use `<value>` named string in the format:
+
+```ruby
+legend: {
+  format: "%<label>s %<name>s %<value>d (%<percent>.2f%%)"
+}
+```
+
+The legend will show:
+
+```ruby
+# =>
+#      x**       * BTC 5977 (54.08%)
+#   xxxx*****
+# ++++xx*******
+# ++++++*******  + BCH 3045 (27.55%)
+# ++++++*******
+#   ++++*****
+#      +**       x LTC 2030 (18.37%)
+```
+
+To display value as currency use `<currency>` name string in the format:
+
+```ruby
+legend: {
+  format: "%<label>s %<name>s $%<currency>s (%<percent>.0f%%)"
+}
+```
+
+The legend will show:
+
+```ruby
+# =>
+#      x**       * BTC $5,977 (54%)
+#   xxxx*****
+# ++++xx*******
+# ++++++*******  + BCH $3,045 (28%)
+# ++++++*******
+#   ++++*****
+#      +**       x LTC $2,030 (18%)
+```
+
+The currency can be further customised using `:precision` and `:delimiter` keys:
+
+```ruby
+legend: {
+  format: "%<label>s %<name>s $%<currency>s (%<percent>.0f%%)",
+  precision: 3,
+  delimiter: '*'
+}
+```
+
+The legend will show:
+
+```ruby
+# =>
+#      x**       * BTC $5*977.123 (54%)
+#   xxxx*****
+# ++++xx*******
+# ++++++*******  + BCH $3*045.200 (28%)
+# ++++++*******
+#   ++++*****
+#      +**       x LTC $2*030.444 (18%)
 ```
 
 ## Development
