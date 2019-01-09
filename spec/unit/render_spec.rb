@@ -9,6 +9,12 @@ RSpec.describe TTY::Pie, '#render' do
     ]
   }
 
+  it "renders chart with no data" do
+    pie = TTY::Pie.new(data: [], radius: 2)
+
+    expect(pie.render).to eq('')
+  end
+
   it "renders a pie chart with legend and without cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2)
 

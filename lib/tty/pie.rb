@@ -119,6 +119,7 @@ module TTY
     # @api public
     def render
       items = data_items
+      return '' if items.empty?
       angles = data_angles(items)
       output = []
 
