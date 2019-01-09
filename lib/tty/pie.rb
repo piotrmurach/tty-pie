@@ -110,6 +110,7 @@ module TTY
     # @api public
     def update(data)
       @data = data
+      self
     end
 
     # Draw a pie based on the provided data
