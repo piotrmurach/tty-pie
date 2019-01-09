@@ -168,6 +168,15 @@ module TTY
     end
     alias to_s render
 
+    # Reset data
+    #
+    # @api public
+    def clear
+      @data = []
+      self
+    end
+    alias reset clear
+
     private
 
     # All angles from the data to slice the pie
