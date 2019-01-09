@@ -153,7 +153,9 @@ module TTY
             output << cursor.move_to(center_x + aspect_ratio * radius + label_horiz_space, center_y + y)
           end
           if labels_range.include?(y)
-            output << ' ' * ((center_x - width) + label_horiz_space) if top.nil?
+            if top.nil?
+              output << ' ' * ((center_x - (left.to_i + width)) + label_horiz_space)
+            end
             output << labels[label_offset + y / label_vert_space]
           end
         end

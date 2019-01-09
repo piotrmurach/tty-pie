@@ -63,6 +63,28 @@ RSpec.describe TTY::Pie, ':legend option' do
     ].join)
   end
 
+  it "renders legend next to chart without any line separator" do
+    data = [
+      { name: 'BTC', value: 5977, fill: '*' },
+      { name: 'BCH', value: 3045, fill: '+' },
+      { name: 'LTC', value: 2030, fill: 'x' }
+    ]
+
+    pie = TTY::Pie.new(data: data, left: 2, top: 2, radius: 2, legend: {left: 2, line: 0})
+
+    output = pie.render
+
+    expected_output = [
+      "\e[3;6Hx\e[3;7H*\e[3;8H*\e[3;13H\n",
+      "\e[4;4H+\e[4;5Hx\e[4;6Hx\e[4;7H*\e[4;8H*\e[4;9H*\e[4;10H*\e[4;13H* BTC 54.08%\n",
+      "\e[5;3H+\e[5;4H+\e[5;5H+\e[5;6H+\e[5;7H*\e[5;8H*\e[5;9H*\e[5;10H*\e[5;11H*\e[5;13H+ BCH 27.55%\n",
+      "\e[6;4H+\e[6;5H+\e[6;6H+\e[6;7H*\e[6;8H*\e[6;9H*\e[6;10H*\e[6;13Hx LTC 18.37%\n",
+      "\e[7;6H+\e[7;7H*\e[7;8H*\e[7;13H\n"
+    ].join
+
+    expect(output).to eq(expected_output)
+  end
+
   it "renders legend with a custom format" do
     data = [
       { name: 'BTC', value: 5977, fill: '*' },
