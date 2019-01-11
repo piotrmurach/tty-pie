@@ -48,7 +48,7 @@ Or install it yourself as:
   * [2.1 data](#21-data)
   * [2.2 add](#22-add)
   * [2.3 update](#23-update)
-  * [2.4 draw](#24-draw)
+  * [2.4 render](#24-render)
   * [2.5 position](#25-position)
   * [2.6 radius](#26-radius)
   * [2.7 legend](#27-legend)
@@ -56,7 +56,7 @@ Or install it yourself as:
 
 ## 1. Usage
 
-To draw a pie chart you need to provide an array of data items:
+To render a pie chart you need to provide an array of data items:
 
 ```ruby
 data = [
@@ -96,7 +96,7 @@ print pie_chart
 
 ### 2.1 data
 
-To draw a pie chart you need to provide data. A single data item is just a Ruby hash that can contain the following keys:
+To render a pie chart you need to provide data. A single data item is just a Ruby hash that can contain the following keys:
 
 * `:name` - used for setting the entry name in legend
 * `:value` - used for calculating actual pie slice size
@@ -186,14 +186,14 @@ new_data = [
 pie_chart.update(new_data)
 ```
 
-### 2.4 draw
+### 2.4 render
 
-Once a pie chart has been initialized use the `draw` or `to_s` method to return a string representation of the chart.
+Once a pie chart has been initialized use the `render` or `to_s` method to return a string representation of the chart.
 
 To actually show it in a terminal, you need to print it:
 
 ```ruby
-print pie_chart.draw
+print pie_chart.render
 # => this will render chart in terminal
 ```
 
