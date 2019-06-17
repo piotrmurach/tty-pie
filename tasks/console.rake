@@ -1,10 +1,8 @@
-# encoding: utf-8
-
 desc 'Load gem inside irb console'
 task :console do
   require 'irb'
   require 'irb/completion'
-  require File.join(__FILE__, '../../lib/tty-pie_chart')
+  require File.join(__FILE__, '../../lib/tty-pie')
   ARGV.clear
   IRB.start
 end
