@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'pastel'
+require "pastel"
 
 module TTY
   class Pie
     # Encapsulates a single data item
     class DataItem
-      LABEL_FORMAT = '%<label>s %<name>s %<percent>.2f%%'
+      LABEL_FORMAT = "%<label>s %<name>s %<percent>.2f%%"
 
       attr_accessor :name
 
@@ -49,7 +49,7 @@ module TTY
       def to_label(legend)
         pattern   = legend && legend[:format] || LABEL_FORMAT
         precision = legend && legend[:precision] || 2
-        delimiter = legend && legend[:delimiter] || ','
+        delimiter = legend && legend[:delimiter] || ","
 
         label = color ? @pastel.decorate(fill, color) : fill
         currency = number_to_currency(value, precision: precision,
@@ -68,8 +68,8 @@ module TTY
       # @return [String]
       #
       # @api private
-      def number_to_currency(value, precision: 2, delimiter: ',')
-        whole, part = value.to_s.split('.')
+      def number_to_currency(value, precision: 2, delimiter: ",")
+        whole, part = value.to_s.split(".")
         unless part.nil?
           part = format("%.#{precision}f", part.to_f / 10**part.size)[1..-1]
         end

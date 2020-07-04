@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::Pie, '#reset' do
+RSpec.describe TTY::Pie, "#reset" do
   it "resets current data" do
-    data = [ { name: 'BTC', value: 5977, fill: '*' } ]
+    data = [ { name: "BTC", value: 5977, fill: "*" } ]
 
     pie = TTY::Pie.new(data: data, radius: 2)
 
@@ -18,6 +18,6 @@ RSpec.describe TTY::Pie, '#reset' do
 
     pie.reset
 
-    expect(pie.render).to eq('')
+    expect(pie.render).to eq("")
   end
 end

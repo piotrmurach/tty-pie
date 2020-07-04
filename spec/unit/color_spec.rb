@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::Pie, ':color option' do
+RSpec.describe TTY::Pie, ":color option" do
   it "renders a pie chart without colors" do
     data = [
-      { name: 'BTC', value: 5977, fill: '*' },
-      { name: 'BCH', value: 3045, fill: '+' },
-      { name: 'LTC', value: 2030, fill: 'x' }
+      { name: "BTC", value: 5977, fill: "*" },
+      { name: "BCH", value: 3045, fill: "+" },
+      { name: "LTC", value: 2030, fill: "x" }
     ]
     pie = TTY::Pie.new(data: data, radius: 2)
 
@@ -22,9 +22,9 @@ RSpec.describe TTY::Pie, ':color option' do
 
   it "renders a pie chart with colors as a parameter" do
     data = [
-      { name: 'BTC', value: 5977, fill: '*' },
-      { name: 'BCH', value: 3045, fill: '+' },
-      { name: 'LTC', value: 2030, fill: 'x' }
+      { name: "BTC", value: 5977, fill: "*" },
+      { name: "BCH", value: 3045, fill: "+" },
+      { name: "LTC", value: 2030, fill: "x" }
     ]
     pie = TTY::Pie.new(data: data, radius: 2, colors: %i[yellow green magenta])
 
@@ -41,9 +41,9 @@ RSpec.describe TTY::Pie, ':color option' do
 
   it "renders a pie chart with colors" do
     data = [
-      { name: 'BTC', value: 5977, color: :bright_yellow },
-      { name: 'BCH', value: 3045, color: :bright_green },
-      { name: 'LTC', value: 2030, color: :bright_magenta }
+      { name: "BTC", value: 5977, color: :bright_yellow },
+      { name: "BCH", value: 3045, color: :bright_green },
+      { name: "LTC", value: 2030, color: :bright_magenta }
     ]
     pie = TTY::Pie.new(data: data, radius: 2)
 
@@ -63,9 +63,9 @@ RSpec.describe TTY::Pie, ':color option' do
 
   it "renders a pie chart with legend and cursor positioning" do
     data = [
-      { name: 'BTC', value: 5977, color: :bright_yellow },
-      { name: 'BCH', value: 3045, color: :bright_green },
-      { name: 'LTC', value: 2030, color: :bright_magenta }
+      { name: "BTC", value: 5977, color: :bright_yellow },
+      { name: "BCH", value: 3045, color: :bright_green },
+      { name: "LTC", value: 2030, color: :bright_magenta }
     ]
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10)
 
@@ -85,9 +85,9 @@ RSpec.describe TTY::Pie, ':color option' do
 
   it "renders a pie chart without legend and with cursor positioning" do
     data = [
-      { name: 'BTC', value: 5977, color: :bright_yellow },
-      { name: 'BCH', value: 3045, color: :bright_green },
-      { name: 'LTC', value: 2030, color: :bright_magenta }
+      { name: "BTC", value: 5977, color: :bright_yellow },
+      { name: "BCH", value: 3045, color: :bright_green },
+      { name: "LTC", value: 2030, color: :bright_magenta }
     ]
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false)
 

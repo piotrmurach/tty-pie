@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::Pie, '#render' do
+RSpec.describe TTY::Pie, "#render" do
   let(:data) {
     [
-      { name: 'BTC', value: 5977 },
-      { name: 'BCH', value: 3045 },
-      { name: 'LTC', value: 2030 }
+      { name: "BTC", value: 5977 },
+      { name: "BCH", value: 3045 },
+      { name: "LTC", value: 2030 }
     ]
   }
 
   it "renders chart with no data" do
     pie = TTY::Pie.new(data: [], radius: 2)
 
-    expect(pie.render).to eq('')
+    expect(pie.render).to eq("")
   end
 
   it "renders a pie chart with legend and without cursor positioning" do

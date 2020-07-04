@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe TTY::Pie, ':fill option' do
+RSpec.describe TTY::Pie, ":fill option" do
   let(:data) {
     [
-      { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
-      { name: 'BCH', value: 3045, color: :bright_green, fill: '+' },
-      { name: 'LTC', value: 2030, color: :bright_magenta, fill: 'x' }
+      { name: "BTC", value: 5977, color: :bright_yellow, fill: "*" },
+      { name: "BCH", value: 3045, color: :bright_green, fill: "+" },
+      { name: "LTC", value: 2030, color: :bright_magenta, fill: "x" }
     ]
   }
 

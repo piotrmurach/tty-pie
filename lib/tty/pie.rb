@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require 'pastel'
-require 'tty-cursor'
+require "pastel"
+require "tty-cursor"
 
-require_relative 'pie/data_item'
-require_relative 'pie/version'
+require_relative "pie/data_item"
+require_relative "pie/version"
 
 module TTY
   class Pie
     FULL_CIRCLE_DEGREES = 360
 
-    POINT_SYMBOL = '•'
+    POINT_SYMBOL = "•"
 
     LEGEND_LINE_SPACE = 1
 
@@ -35,7 +35,7 @@ module TTY
     # Create pie chart
     #
     # @example
-    #   data = [ { name: 'BTC', value: 5977, fill: '*' } ]
+    #   data = [ { name: "BTC", value: 5977, fill: "*" } ]
     #   pie_chart = TTY::Pie.new(data: data, radius: 2)
     #
     # @param [Array[Hash]] data
@@ -120,7 +120,7 @@ module TTY
     # @api public
     def render
       items = data_items
-      return '' if items.empty?
+      return "" if items.empty?
       angles = data_angles(items)
       output = []
 
@@ -135,7 +135,7 @@ module TTY
         width = (Math.sqrt(radius * radius - y * y) * aspect_ratio).round
         width = width.zero? ? (radius / aspect_ratio).round : width
 
-        output << ' ' * (center_x - width) if top.nil?
+        output << " " * (center_x - width) if top.nil?
         (-width..width).each do |x|
           angle = radian_to_degree(Math.atan2(x, y))
           item = items[select_data_item(angle, angles)]
@@ -155,7 +155,7 @@ module TTY
           end
           if labels_range.include?(y)
             if top.nil?
-              output << ' ' * ((center_x - (left.to_i + width)) + label_horiz_space)
+              output << " " * ((center_x - (left.to_i + width)) + label_horiz_space)
             end
             output << labels[label_offset + y / label_vert_space]
           end
