@@ -3,7 +3,7 @@
 ## [v0.4.0] - 2020-07-04
 
 ### Changed
-* Change gemspec to remove test & example artefacts
+* Change gemspec to remove test and example artefacts
 * Change to update pastel dependency
 
 ## [v0.3.0] - 2019-08-02
