@@ -2,6 +2,6 @@
 
 module TTY
   class Pie
-    VERSION = "0.3.0"
+    VERSION = "0.4.0"
   end # Pie
 end # TTY
