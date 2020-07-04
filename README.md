@@ -30,7 +30,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tty-pie'
+gem "tty-pie"
 ```
 
 And then execute:
@@ -60,10 +60,10 @@ To render a pie chart you need to provide an array of data items:
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
-  { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' },
-  { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' },
-  { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
+  { name: "BTC", value: 5977, color: :bright_yellow, fill: "*" },
+  { name: "BCH", value: 3045, color: :bright_green, fill: "x" },
+  { name: "LTC", value: 2030, color: :bright_magenta, fill: "@" },
+  { name: "ETH", value: 2350, color: :bright_cyan, fill: "+" }
 ]
 ```
 
@@ -109,10 +109,10 @@ For example, the following will result in four slices in a pie chart:
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977 },
-  { name: 'BCH', value: 3045 },
-  { name: 'LTC', value: 2030 },
-  { name: 'ETH', value: 2350 }
+  { name: "BTC", value: 5977 },
+  { name: "BCH", value: 3045 },
+  { name: "LTC", value: 2030 },
+  { name: "ETH", value: 2350 }
 ]
 ```
 
@@ -120,10 +120,10 @@ However, the above data slices will be displayed without any color. Use `:color`
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977, color: :bright_yellow },
-  { name: 'BCH', value: 3045, color: :bright_green },
-  { name: 'LTC', value: 2030, color: :bright_magenta },
-  { name: 'ETH', value: 2350, color: :bright_cyan }
+  { name: "BTC", value: 5977, color: :bright_yellow },
+  { name: "BCH", value: 3045, color: :bright_green },
+  { name: "LTC", value: 2030, color: :bright_magenta },
+  { name: "ETH", value: 2350, color: :bright_cyan }
 ]
 ```
 
@@ -131,10 +131,10 @@ To further make your chart readable consider making pie chart slices visible by 
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
-  { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' },
-  { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' },
-  { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
+  { name: "BTC", value: 5977, color: :bright_yellow, fill: "*" },
+  { name: "BCH", value: 3045, color: :bright_green, fill: "x" },
+  { name: "LTC", value: 2030, color: :bright_magenta, fill: "@" },
+  { name: "ETH", value: 2350, color: :bright_cyan, fill: "+" }
 ]
 ```
 
@@ -150,10 +150,10 @@ Alternatively, you can delay adding data later with `add` or `<<` methods:
 
 ```ruby
 pie_chart = TTY::Pie.new
-pie_chart << { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' }
-pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
-pie_chart << { name: 'LTC', value: 2030, color: :bright_magenta, fill: '@' }
-pie_chart << { name: 'ETH', value: 2350, color: :bright_cyan, fill: '+' }
+pie_chart << { name: "BTC", value: 5977, color: :bright_yellow, fill: "*" }
+pie_chart << { name: "BCH", value: 3045, color: :bright_green, fill: "x" }
+pie_chart << { name: "LTC", value: 2030, color: :bright_magenta, fill: "@" }
+pie_chart << { name: "ETH", value: 2350, color: :bright_cyan, fill: "+" }
 ```
 
 ### 2.2 add
@@ -162,8 +162,8 @@ You can also set data for the pie chart using the `add` or `<<` method calls. On
 
 ```ruby
 pie_chart = TTY::Pie.new
-pie_chart << { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' }
-pie_chart << { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
+pie_chart << { name: "BTC", value: 5977, color: :bright_yellow, fill: "*" }
+pie_chart << { name: "BCH", value: 3045, color: :bright_green, fill: "x" }
 ...
 ```
 
@@ -173,14 +173,14 @@ To replace current data completely with the new use `update`:
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977, color: :bright_yellow, fill: '*' },
-  { name: 'BCH', value: 3045, color: :bright_green, fill: 'x' }
+  { name: "BTC", value: 5977, color: :bright_yellow, fill: "*" },
+  { name: "BCH", value: 3045, color: :bright_green, fill: "x" }
 ]
 pie_chart = TTY::Pie.new(data: data)
 
 new_data = [
-  { name: 'BTC', value: 3400, color: :bright_yellow, fill: '*' },
-  { name: 'BCH', value: 1200, color: :bright_green, fill: 'x' },
+  { name: "BTC", value: 3400, color: :bright_yellow, fill: "*" },
+  { name: "BCH", value: 1200, color: :bright_green, fill: "x" },
 ]
 
 pie_chart.update(new_data)
@@ -226,9 +226,9 @@ Provided the following data:
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977, fill: '*' },
-  { name: 'BCH', value: 3045, fill: '+' },
-  { name: 'LTC', value: 2030, fill: 'x' }
+  { name: "BTC", value: 5977, fill: "*" },
+  { name: "BCH", value: 3045, fill: "+" },
+  { name: "LTC", value: 2030, fill: "x" }
 ]
 ```
 
@@ -280,9 +280,9 @@ Given data items:
 
 ```ruby
 data = [
-  { name: 'BTC', value: 5977.12345, fill: '*' },
-  { name: 'BCH', value: 3045.2, fill: '+' },
-  { name: 'LTC', value: 2030.444, fill: 'x' }
+  { name: "BTC", value: 5977.12345, fill: "*" },
+  { name: "BCH", value: 3045.2, fill: "+" },
+  { name: "LTC", value: 2030.444, fill: "x" }
 ]
 ```
 
@@ -347,7 +347,7 @@ The currency can be further customised using `:precision` and `:delimiter` keys:
 legend: {
   format: "%<label>s %<name>s $%<currency>s (%<percent>.0f%%)",
   precision: 3,
-  delimiter: '*'
+  delimiter: "*"
 }
 ```
 
