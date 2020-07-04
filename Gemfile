@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "pastel", git: "https://github.com/piotrmurach/pastel"
+# gem "pastel", git: "https://github.com/piotrmurach/pastel"
 
 group :test do
   gem "benchmark-ips", "~> 2.7.2"
