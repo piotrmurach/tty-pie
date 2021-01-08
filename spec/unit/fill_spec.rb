@@ -10,7 +10,7 @@ RSpec.describe TTY::Pie, ":fill option" do
   }
 
   it "renders a pie chart with custom fill per data item" do
-     pie = TTY::Pie.new(data: data, radius: 2)
+     pie = TTY::Pie.new(data: data, radius: 2, enable_color: true)
 
      output = pie.render
 
@@ -27,7 +27,8 @@ RSpec.describe TTY::Pie, ":fill option" do
 
   it "renders with custom fill chars per instance" do
      data_without_fill = data.map { |item| item.delete(:fill); item }
-     pie = TTY::Pie.new(data: data_without_fill, radius: 2, fill: %w[* + x])
+     pie = TTY::Pie.new(data: data_without_fill, radius: 2, fill: %w[* + x],
+                        enable_color: true)
 
      output = pie.render
 

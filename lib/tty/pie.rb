@@ -46,11 +46,13 @@ module TTY
     # @param [Hash,Boolean] legend
     # @param [String] fill
     # @param [Float] aspect_ratio
+    # @param [Boolean,nil] enable_color
+    #   disable or force prompt coloring, defaults to nil
     #
     # @api public
     def initialize(data: [], top: nil, left: nil, radius: 10,
                    legend: {}, fill: POINT_SYMBOL, aspect_ratio: 2,
-                   colors: [])
+                   colors: [], enable_color: nil)
       @data = data.dup
       @top = top
       @left = left
@@ -62,7 +64,7 @@ module TTY
       @center_x = (left || 0) + radius * aspect_ratio
       @center_y = (top || 0) + radius
 
-      @pastel = Pastel.new(enabled: !!colors)
+      @pastel = Pastel.new(enabled: enable_color)
       @cursor = TTY::Cursor
     end
 

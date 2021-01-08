@@ -26,7 +26,8 @@ RSpec.describe TTY::Pie, ":color option" do
       { name: "BCH", value: 3045, fill: "+" },
       { name: "LTC", value: 2030, fill: "x" }
     ]
-    pie = TTY::Pie.new(data: data, radius: 2, colors: %i[yellow green magenta])
+    pie = TTY::Pie.new(data: data, radius: 2, colors: %i[yellow green magenta],
+                       enable_color: true)
 
     output = pie.render
     expected_output = [
@@ -45,7 +46,7 @@ RSpec.describe TTY::Pie, ":color option" do
       { name: "BCH", value: 3045, color: :bright_green },
       { name: "LTC", value: 2030, color: :bright_magenta }
     ]
-    pie = TTY::Pie.new(data: data, radius: 2)
+    pie = TTY::Pie.new(data: data, radius: 2, enable_color: true)
 
     output = pie.render
 
@@ -67,7 +68,8 @@ RSpec.describe TTY::Pie, ":color option" do
       { name: "BCH", value: 3045, color: :bright_green },
       { name: "LTC", value: 2030, color: :bright_magenta }
     ]
-    pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10)
+    pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10,
+                       enable_color: true)
 
     output = pie.render
 
@@ -89,7 +91,8 @@ RSpec.describe TTY::Pie, ":color option" do
       { name: "BCH", value: 3045, color: :bright_green },
       { name: "LTC", value: 2030, color: :bright_magenta }
     ]
-    pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false)
+    pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false,
+                       enable_color: true)
 
     output = pie.render
 
