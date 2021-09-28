@@ -9,15 +9,15 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/9n69xpw64sylqh2y?svg=true)][appveyor]
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfac05073e1549e9dbb6/maintainability)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-pie/badge.svg)][coverage]
-[![Inline docs](http://inch-ci.org/github/piotrmurach/tty-pie.svg?branch=master)][inchpages]
+[![Inline docs](https://inch-ci.org/github/piotrmurach/tty-pie.svg?branch=master)][inchpages]
 
 [gitter]: https://gitter.im/piotrmurach/tty
-[gem]: http://badge.fury.io/rb/tty-pie
+[gem]: https://badge.fury.io/rb/tty-pie
 [gh_actions_ci]: https://github.com/piotrmurach/tty-pie/actions?query=workflow%3ACI
 [appveyor]: https://ci.appveyor.com/project/piotrmurach/tty-pie
 [codeclimate]: https://codeclimate.com/github/piotrmurach/tty-pie/maintainability
 [coverage]: https://coveralls.io/github/piotrmurach/tty-pie
-[inchpages]: http://inch-ci.org/github/piotrmurach/tty-pie
+[inchpages]: https://inch-ci.org/github/piotrmurach/tty-pie
 
 > Draw pie charts in your terminal window
 
@@ -372,7 +372,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/piotrmurach/tty-pie. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/piotrmurach/tty-pie. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/piotrmurach/tty-pie/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -380,7 +380,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the TTY::Pie project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/piotrmurach/tty-pie_chart/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the TTY::Pie project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/piotrmurach/tty-pie/blob/master/CODE_OF_CONDUCT.md).
 
 ## Copyright
 
