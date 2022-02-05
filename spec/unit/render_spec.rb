@@ -60,7 +60,7 @@ RSpec.describe TTY::Pie, "#render" do
     ].join)
   end
 
-  it "render a pie chart with legend and cursor positioning" do
+  it "renders a pie chart with legend and cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10)
 
     output = pie.render
@@ -75,17 +75,17 @@ RSpec.describe TTY::Pie, "#render" do
     ].join)
   end
 
-  it "render a pie chart without legend and with cursor positioning" do
+  it "renders a pie chart without legend and with cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2, left: 50, top: 10, legend: false)
 
     output = pie.render
 
     expect(output).to eq([
-      "\e[11;54H\•\e[11;55H•\e[11;56H•\n",
-      "\e[12;52H\•\e[12;53H•\e[12;54H•\e[12;55H•\e[12;56H•\e[12;57H•\e[12;58H•\n",
-      "\e[13;51H\•\e[13;52H•\e[13;53H•\e[13;54H•\e[13;55H•\e[13;56H•\e[13;57H•\e[13;58H•\e[13;59H•\n",
-      "\e[14;52H\•\e[14;53H•\e[14;54H•\e[14;55H•\e[14;56H•\e[14;57H•\e[14;58H•\n",
-      "\e[15;54H\•\e[15;55H•\e[15;56H•\n",
+      "\e[11;54H•\e[11;55H•\e[11;56H•\n",
+      "\e[12;52H•\e[12;53H•\e[12;54H•\e[12;55H•\e[12;56H•\e[12;57H•\e[12;58H•\n",
+      "\e[13;51H•\e[13;52H•\e[13;53H•\e[13;54H•\e[13;55H•\e[13;56H•\e[13;57H•\e[13;58H•\e[13;59H•\n",
+      "\e[14;52H•\e[14;53H•\e[14;54H•\e[14;55H•\e[14;56H•\e[14;57H•\e[14;58H•\n",
+      "\e[15;54H•\e[15;55H•\e[15;56H•\n",
     ].join)
   end
 end
