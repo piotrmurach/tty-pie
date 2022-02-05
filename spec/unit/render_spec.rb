@@ -15,6 +15,23 @@ RSpec.describe TTY::Pie, "#render" do
     expect(pie.render).to eq("")
   end
 
+  it "renders an empty pie chart when all values are zero" do
+    data = [
+      {name: "BTC", value: 0},
+      {name: "BCH", value: 0},
+      {name: "LTC", value: 0}
+    ]
+    pie = TTY::Pie.new(data: data, radius: 2)
+
+    expect(pie.render).to eq([
+      "             • BTC 0.00%\n",
+      "        \n",
+      "             • BCH 0.00%\n",
+      "        \n",
+      "             • LTC 0.00%\n"
+    ].join)
+  end
+
   it "renders a pie chart with legend and without cursor positioning" do
     pie = TTY::Pie.new(data: data, radius: 2)
 

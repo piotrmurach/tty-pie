@@ -12,6 +12,8 @@ module TTY
 
     POINT_SYMBOL = "•"
 
+    SPACE_CHAR = " "
+
     LEGEND_LINE_SPACE = 1
 
     LEGEND_LEFT_SPACE = 4
@@ -83,9 +85,9 @@ module TTY
     #
     # @api private
     def data_items
-      total_value = total
+      total_val = total
       @data.each_with_index.map do |item, i|
-        percent = (item[:value] * 100) / total_value.to_f
+        percent = total_val.zero? ? 0 : (item[:value] * 100) / total_val.to_f
         color_fill = item[:fill] || fill[i % fill.size]
         color = colors && !colors.empty? ? colors[i % colors.size] : item.fetch(:color, false)
         DataItem.new(item[:name], item[:value], percent, color, color_fill)
@@ -137,14 +139,17 @@ module TTY
         width = (Math.sqrt(radius * radius - y * y) * aspect_ratio).round
         width = width.zero? ? (radius / aspect_ratio).round : width
 
-        output << " " * (center_x - width) if top.nil?
+        output << SPACE_CHAR * (center_x - width) if top.nil?
         (-width..width).each do |x|
           angle = radian_to_degree(Math.atan2(x, y))
-          item = items[select_data_item(angle, angles)]
+          idx = select_data_item(angle, angles)
+          item = items[idx] if idx
           if !top.nil?
             output << cursor.move_to(center_x + x, center_y + y)
           end
-          if item.color
+          if item.nil?
+            output << SPACE_CHAR
+          elsif item.color
             output << @pastel.decorate(item.fill, item.color)
           else
             output << item.fill
@@ -157,7 +162,7 @@ module TTY
           end
           if labels_range.include?(y)
             if top.nil?
-              output << " " * ((center_x - (left.to_i + width)) + label_horiz_space)
+              output << SPACE_CHAR * ((center_x - (left.to_i + width)) + label_horiz_space)
             end
             output << labels[label_offset + y / label_vert_space]
           end
