@@ -2,7 +2,7 @@
 
 RSpec.describe TTY::Pie, "#reset" do
   it "resets current data" do
-    data = [ { name: "BTC", value: 5977, fill: "*" } ]
+    data = [{name: "BTC", value: 5977, fill: "*"}]
 
     pie = TTY::Pie.new(data: data, radius: 2)
 
