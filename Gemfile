@@ -2,7 +2,9 @@ source "https://rubygems.org"
 
 gemspec
 
-# gem "pastel", git: "https://github.com/piotrmurach/pastel"
+if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.1.0")
+  gem "rspec-benchmark", "~> 0.6"
+end
 gem "json", "2.4.1" if RUBY_VERSION == "2.0.0"
 
 group :test do
