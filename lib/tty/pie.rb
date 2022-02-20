@@ -7,49 +7,137 @@ require_relative "pie/data_item"
 require_relative "pie/version"
 
 module TTY
+  # Responsible for drawing pie chart in a terminal
+  #
+  # @api public
   class Pie
+    # The full circle degrees
+    #
+    # @return [Integer]
+    #
+    # @api private
     FULL_CIRCLE_DEGREES = 360
 
+    # Default symbol for a pie chart fill
+    #
+    # @return [String]
+    #
+    # @api private
     POINT_SYMBOL = "•"
 
+    # The space character
+    #
+    # @return [String]
+    #
+    # @api private
     SPACE_CHAR = " "
 
+    # The spacing between legend lines
+    #
+    # @return [Integer]
+    #
+    # @api private
     LEGEND_LINE_SPACE = 1
 
+    # The column offset for legend from a pie chart
+    #
+    # @return [Integer]
+    #
+    # @api private
     LEGEND_LEFT_SPACE = 4
 
-    attr_reader :top, :left
+    # The top position
+    #
+    # @return [Integer]
+    #
+    # @api public
+    attr_reader :top
 
-    attr_reader :center_x, :center_y
+    # The left position
+    #
+    # @return [Integer]
+    #
+    # @api public
+    attr_reader :left
 
+    # The x coordinate of center position
+    #
+    # @return [Integer]
+    #
+    # @api public
+    attr_reader :center_x
+
+    # The y coordinate of center position
+    #
+    # @return [Integer]
+    #
+    # @api public
+    attr_reader :center_y
+
+    # The pie radius
+    #
+    # @return [Integer]
+    #
+    # @api public
     attr_reader :radius
 
+    # The ratio of columns to rows
+    #
+    # @return [Float]
+    #
+    # @api public
     attr_reader :aspect_ratio
 
+    # The cursor movement
+    #
+    # @return [TTY::Cursor]
+    #
+    # @api public
     attr_reader :cursor
 
+    # The symbols to use to mark pie slices
+    #
+    # @return [Array<String>]
+    #
+    # @api public
     attr_reader :fill
 
+    # The colors to use to mark pie slices
+    #
+    # @return [Array<Symbol>]
+    #
+    # @api public
     attr_reader :colors
 
+    # The legend position and formatting
+    #
+    # @return [Hash{Symbol => String, Integer}]
+    #
+    # @api public
     attr_reader :legend
 
-    # Create pie chart
+    # Create a Pie instance
     #
     # @example
-    #   data = [ { name: "BTC", value: 5977, fill: "*" } ]
-    #   pie_chart = TTY::Pie.new(data: data, radius: 2)
+    #   data = [{name: "BTC", value: 5977, color: :yellow, fill: "*"}]
+    #   pie = TTY::Pie.new(data: data, radius: 20)
     #
-    # @param [Array[Hash]] data
+    # @param [Array<Hash>] data
     #   the data to display in each slice
     # @param [Integer] top
+    #   the top position
     # @param [Integer] left
+    #   the left position
     # @param [Integer] radius
-    # @param [Hash,Boolean] legend
-    # @param [String] fill
+    #   the pie radius
+    # @param [Hash{Symbol => String,Integer},Boolean] legend
+    #   the legend position and formatting
+    # @param [Array<String>] fill
+    #   the symbols to use to mark pie slices
     # @param [Float] aspect_ratio
+    #   the ratio of columns to rows
     # @param [Boolean,nil] enable_color
-    #   disable or force prompt coloring, defaults to nil
+    #   disable or force output colouring, defaults to nil
     #
     # @api public
     def initialize(data: [], top: nil, left: nil, radius: 10,
@@ -96,9 +184,16 @@ module TTY
 
     # Add a data item
     #
-    # @param [Hash]
+    # @example
+    #   pie.add({name: "BTC", value: 5977, color: :yellow, fill: "*"})
     #
-    # @return [self]
+    # @example
+    #   pie << {name: "BTC", value: 5977, color: :yellow, fill: "*"}
+    #
+    # @param [Hash{Symbol => String, Symbol, Numeric}] item
+    #   the item to add to data
+    #
+    # @return [TTY::Pie]
     #
     # @api public
     def add(item)
@@ -109,7 +204,16 @@ module TTY
 
     # Replace current data with new set
     #
-    # @param [Array[Hash]]
+    # @example
+    #   pie.update([
+    #     {name: "BTC", value: 5977, color: :yellow, fill: "*"},
+    #     {name: "ETH", value: 3045, color: :green, fill: "+"}
+    #   ])
+    #
+    # @param [Array<Hash>] data
+    #   the data to replace with
+    #
+    # @return [TTY::Pie]
     #
     # @api public
     def update(data)
@@ -118,6 +222,9 @@ module TTY
     end
 
     # Draw a pie based on the provided data
+    #
+    # @example
+    #   pie.render
     #
     # @return [String]
     #
@@ -176,6 +283,11 @@ module TTY
     alias to_s render
 
     # Reset data
+    #
+    # @example
+    #   pie.clear
+    #
+    # @return [TTY::Pie]
     #
     # @api public
     def clear
