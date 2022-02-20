@@ -53,6 +53,7 @@ Or install it yourself as:
   * [2.6 radius](#26-radius)
   * [2.7 legend](#27-legend)
     * [2.7.1 format](#271-format)
+  * [2.8 enable_color](#28-enable_color)
 
 ## 1. Usage
 
@@ -362,6 +363,16 @@ The legend will show:
 # ++++++*******
 #   ++++*****
 #      +**       x LTC $2*030.444 (18%)
+```
+
+### 2.8 enable_color
+
+You can control when to apply colouring to a pie chart output with `:enable_color` option.
+
+Valid values are `true`, `false` or `nil`. By default `:enable_color` is set to `nil` which performs automatic terminal colour support detection. Setting `:enable_color` to `false` will disable coloured output. To force the output to be always coloured set `:enable_color` to `true` like so:
+
+```ruby
+ TTY::Pie.new(data: data, enable_color: true)
 ```
 
 ## Development
