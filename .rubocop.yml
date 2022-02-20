@@ -1,48 +1,84 @@
-Lint/AssignmentInCondition:
+AllCops:
+  NewCops: enable
+
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+  EnforcedStyle: consistent
+
+Layout/LineLength:
+  Max: 80
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
+Lint/AmbiguousOperatorPrecedence:
   Enabled: false
 
+Lint/AssignmentInCondition:
+  Enabled: true
+  AllowSafeAssignment: true
+
 Metrics/AbcSize:
-  Max: 30
+  Max: 35
 
 Metrics/BlockLength:
-  CountComments: true
   Max: 25
-  ExcludedMethods: []
+  IgnoredMethods: []
   Exclude:
     - "spec/**/*"
 
 Metrics/ClassLength:
-  Max: 1500
+  Enabled: false
 
 Metrics/CyclomaticComplexity:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 80
-
 Metrics/MethodLength:
   Max: 20
+
+Metrics/ParameterLists:
+  Enabled: false
 
 Naming/BinaryOperatorParameterName:
   Enabled: false
 
+Naming/FileName:
+  Exclude:
+    - "lib/tty-pie.rb"
+
+Style/AccessorGrouping:
+  Enabled: false
+
 Style/AsciiComments:
   Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/CommentedKeyword:
+  Enabled: false
+
+Style/IfUnlessModifier:
+    Enabled: false
 
 Style/LambdaCall:
   SupportedStyles:
   - call
   - braces
 
+Style/NegatedIf:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
 Style/TrivialAccessors:
-  Enabled: false
-
-# { ... } for multi-line blocks is okay
-Style/BlockDelimiters:
-  Enabled: false
-
-Style/CommentedKeyword:
   Enabled: false
