@@ -232,6 +232,7 @@ module TTY
     def render
       items = data_items
       return "" if items.empty?
+
       angles = data_angles(items)
       output = []
 
@@ -265,11 +266,13 @@ module TTY
 
         if legend
           if !top.nil?
-            output << cursor.move_to(center_x + aspect_ratio * radius + label_horiz_space, center_y + y)
+            output << cursor.move_to(center_x + aspect_ratio * radius +
+                                     label_horiz_space, center_y + y)
           end
           if labels_range.include?(y)
             if top.nil?
-              output << SPACE_CHAR * ((center_x - (left.to_i + width)) + label_horiz_space)
+              output << SPACE_CHAR * ((center_x - (left.to_i + width)) +
+                                      label_horiz_space)
             end
             output << labels[label_offset + y / label_vert_space]
           end
@@ -336,7 +339,7 @@ module TTY
     #
     # @api private
     def select_data_item(angle, angles)
-      angles.index { |a| (FULL_CIRCLE_DEGREES / 2 - angle) < a }
+      angles.index { |a| ((FULL_CIRCLE_DEGREES / 2) - angle) < a }
     end
 
     # Convert radians to degrees
