@@ -1,9 +1,11 @@
-require_relative '../lib/tty-pie'
+# frozen_string_literal: true
+
+require_relative "../lib/tty-pie"
 
 data = [
-  { name: 'BTC', value: 5977, color: :yellow },
-  { name: 'BCH', value: 3045, color: :green },
-  { name: 'LTC', value: 2030, color: :magenta },
+  {name: "BTC", value: 5977, color: :yellow},
+  {name: "BCH", value: 3045, color: :green},
+  {name: "LTC", value: 2030, color: :magenta}
 ]
 
 pie = TTY::Pie.new(
