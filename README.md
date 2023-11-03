@@ -9,7 +9,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/9n69xpw64sylqh2y?svg=true)][appveyor]
 [![Maintainability](https://api.codeclimate.com/v1/badges/dfac05073e1549e9dbb6/maintainability)][codeclimate]
 [![Coverage Status](https://coveralls.io/repos/github/piotrmurach/tty-pie/badge.svg)][coverage]
-[![Inline docs](https://inch-ci.org/github/piotrmurach/tty-pie.svg?branch=master)][inchpages]
 
 [gitter]: https://gitter.im/piotrmurach/tty
 [gem]: https://badge.fury.io/rb/tty-pie
@@ -17,7 +16,6 @@
 [appveyor]: https://ci.appveyor.com/project/piotrmurach/tty-pie
 [codeclimate]: https://codeclimate.com/github/piotrmurach/tty-pie/maintainability
 [coverage]: https://coveralls.io/github/piotrmurach/tty-pie
-[inchpages]: https://inch-ci.org/github/piotrmurach/tty-pie
 
 > Draw pie charts in your terminal window
 
